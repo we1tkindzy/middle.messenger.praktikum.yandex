@@ -1,6 +1,8 @@
 ### Веб-месенджер
 
-![Макет](https://www.figma.com/file/jF5fFFzgGOxQeB4CmKWTiE/Chat_external_link?node-id=0%3A1&t=zquMHUAZWFSwxTwZ-0)
+[Макет](https://www.figma.com/file/jF5fFFzgGOxQeB4CmKWTiE/Chat_external_link?node-id=0%3A1&t=zquMHUAZWFSwxTwZ-0)
+[Сайт](https://ornate-pastelito-e830da.netlify.app/)
+
 ## Описание
 Проект представляет собой мессенджер, в котором в будущем можно будет:
 - авторизоваться
