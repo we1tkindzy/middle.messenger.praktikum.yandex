@@ -1,0 +1,30 @@
+---
+data: [
+  {
+    name: login,
+    label: 'Логин',
+    type: 'text',
+    placeholder: 'ivanivanov'
+  }, 
+  {
+    name: password,
+    label: 'Пароль',
+    type: 'password',
+    placeholder: '••••••'
+  }
+]
+---
+
+{{!< main-layout}}
+
+<section class="authorization">
+  <div class="authorization__wrapper">
+    <h2 class="authorization__title">Вход</h2>
+    <form class="authorization__form" action="POST">
+      {{> input-field data=data}}
+      
+      <button class="authorization__button" type="submit">Войти</button>
+      <a class="authorization__link" href="./signin.hbs">Нет аккаунта?</a>
+    </form>
+  </div>
+</section>

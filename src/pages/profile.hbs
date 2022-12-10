@@ -1,0 +1,59 @@
+{{!< main-layout}}
+
+<section class="profile">
+  <div class="profile__wrapper">
+    <div class="profile__back">
+      <a href="./select-chat.hbs" class="profile__back-button">
+        <svg class="profile__back-button-icon" width="13" height="12" viewBox="0 0 13 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect y="5.19995" width="11" height="1.6" fill="white"/>
+          <path d="M7 1L11 6L7 11" stroke="white" stroke-width="1.6"/>
+        </svg>
+        <span class="visually-hidden">Назад к чатам</span>
+      </a>
+    </div>
+
+    <div class="profile__profile-section">
+      <div class="profile__avatar">
+        <img src="../asserts/avatar-icon.svg" alt="Аватар пользоватлея" width="40" height="40">
+      </div>
+
+      <h3 class="profile__name">Иван</h3>
+
+      <div class="profile__info">
+        <div class="profile__field">
+          <span class="profile__variable">Почта</span>
+          <span class="profile__value">pochta@yandex.ru</span>
+        </div>
+
+        <div class="profile__field">
+          <span class="profile__variable">Логин</span>
+          <span class="profile__value">ivanivanov</span>
+        </div>
+
+        <div class="profile__field">
+          <span class="profile__variable">Имя</span>
+          <span class="profile__value">Иван</span>
+        </div>
+
+        <div class="profile__field">
+          <span class="profile__variable">Фамилия</span>
+          <span class="profile__value">Иванов</span>
+        </div>
+
+        <div class="profile__field">
+          <span class="profile__variable">Имя в чате</span>
+          <span class="profile__value">Иван</span>
+        </div>
+
+        <div class="profile__field">
+          <span class="profile__variable">Телефон</span>
+          <span class="profile__value">+7 (909) 967 30 30</span>
+        </div>
+      </div>
+
+      <a class="profile__cahnge-profile" href="./change-profile.hbs">Изменить данные</a>
+      <a class="profile__cahnge-password" href="./change-password.hbs">Изменить пароль</a>
+      <button class="profile__logout" type="button">Выйти</button>
+    </div>
+  </div>
+</section>
