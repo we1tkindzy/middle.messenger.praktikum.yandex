@@ -1,0 +1,215 @@
+.profile {
+  height: 100%;
+
+  &--change {
+    .profile__avatar {
+      margin-bottom: 97px;
+      position: relative;
+      cursor: pointer;
+
+      &:hover {
+        &::before {
+          position: absolute;
+          content: "Поменять аватар";
+          left: 0;
+          top: 0;
+          width: 130px;
+          height: 130px;
+          font-weight: 500;
+          font-size: 13px;
+          line-height: 14px;
+          text-align: center;
+          color: $white;
+          background-color: $black-bg;
+          border-radius: 50%;
+          display: block;
+          margin: auto;
+          padding-top: 60px;
+          z-index: 5;
+        }
+      }
+    }
+  }
+
+  &__wrapper {
+    display: flex;
+    height: 100%;
+  }
+
+  &__back {
+    display: block;
+    width: 64px;
+    height: 100%;
+    background-color: #FBFBFB;
+    position: relative;
+    border-right: 1px solid $light-gray-1;
+  }
+
+  &__back-button {
+    display: block;
+    width: 28px;
+    height: 28px;
+    background-color: $blue;
+    border-radius: 50%;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    &:hover,
+    &:focus {
+      opacity: 0.6;
+    }
+
+    &:active {
+      opacity: 0.4;
+    }
+  }
+
+  &__back-button-icon {
+    margin: 7px auto 0;
+    display: block;
+    transform: rotate(180deg);
+  }
+
+  &__profile-section {
+    width: 510px;
+    margin: 0 auto;
+    margin-top: 60px;
+  }
+
+  &__avatar {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    background-color: $light-gray-4;
+    margin: 0 auto;
+    margin-bottom: 21px;
+    position: relative;
+
+    img {
+      position: absolute;
+      display: block;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  &__name {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 16px;
+    text-align: center;
+    color: $dark-gray;
+    margin-bottom: 50px;
+  }
+
+  &__info {
+    margin-bottom: 50px;
+  }
+
+  &__field {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid $light-gray-1;
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  &__variable {
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 13px;
+    color: $dark-gray;
+  }
+
+  &__value {
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 13px;
+    color: $gray;
+    background-color: inherit;
+    border: none;
+    text-align: right;
+  }
+
+  &__cahnge-profile,
+  &__cahnge-password {
+    display: block;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 13px;
+    color: $blue;
+
+    padding: 10px 0;
+    border-bottom: 1px solid $light-gray-1;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    &:hover,
+    &:focus {
+      opacity: 0.6;
+    }
+
+    &:active {
+      opacity: 0.4;
+    }
+  }
+
+  &__logout {
+    border: none;
+    background-color: inherit;
+    padding: 0;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 13px;
+    color: $red;
+    cursor: pointer;
+    margin-top: 10px;
+
+    &:hover,
+    &:focus {
+      opacity: 0.6;
+    }
+
+    &:active {
+      opacity: 0.4;
+    }
+  }
+
+  &__submit {
+    width: 280px;
+    display: block;
+    margin: 0 auto;
+    background: $blue;
+    border-radius: 8px;
+    padding: 12px;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 13px;
+    text-align: center;
+    color: $white;
+    border: none;
+
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+      opacity: 0.6;
+    }
+
+    &:active {
+      opacity: 0.4;
+    }
+  }
+}

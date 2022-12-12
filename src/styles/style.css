@@ -1,0 +1,62 @@
+@import './globals/fonts.scss';
+@import './globals/colors.scss';
+@import './blocks/authorization.scss';
+@import '../components/error-page/error-page.scss';
+@import './blocks/chats-page.scss';
+@import '../components/chats/chats.scss';
+@import './blocks/chat-section.scss';
+@import './blocks/user-popup.scss';
+@import './blocks/profile.scss';
+@import './blocks/file-popup.scss';
+
+*,
+::after,
+::before {
+	box-sizing: border-box;
+}
+
+ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+h2,
+p,
+h3 {
+	margin: 0;
+}
+
+html {
+	height: -webkit-fill-available;
+}
+
+a {
+	text-decoration: none;
+}
+
+.container {
+	font-family: 'Inter', sans-serif;;
+	font-style: normal;
+	position: relative;
+	margin: 0;
+	height: 100%;
+	background-color: $white;
+}
+
+.main {
+  height: 100%;
+}
+
+.visually-hidden {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	border: 0;
+	padding: 0;
+	white-space: nowrap;
+	clip-path: inset(100%);
+	clip: rect(0 0 0 0);
+	overflow: hidden;
+}

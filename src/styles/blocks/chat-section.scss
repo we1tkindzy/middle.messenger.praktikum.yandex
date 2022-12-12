@@ -1,0 +1,211 @@
+.chat-section {
+  position: relative;
+
+  &__info {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 12px;
+    text-align: center;
+    color: $gray;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  &__wrapper {
+    padding: 20px 20px 11px;
+    height: 100%;
+  }
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 48px;
+
+    padding-bottom: 10px;
+    border-bottom: 1px solid $light-gray-1;
+  }
+
+  &__profile-info {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  &__avatar-img {
+    width: 34px;
+    height: 34px;
+    margin-right: 10px;
+  }
+
+  &__name {
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 13px;
+    color: $dark-gray;
+  }
+
+  &__more {
+    border: none;
+    background-color: inherit;
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+      opacity: 0.6;
+    }
+
+    &:active {
+      opacity: 0.4;
+    }
+  }
+
+  &__date {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 12px;
+    text-align: center;
+    color: $gray;
+    display: block;
+    margin-bottom: 40px;
+  }
+
+  &__message {
+    max-width: 402px;
+    padding: 11px;
+    margin-bottom: 10px;
+    background-color: $light-gray-2;
+    position: relative;
+    border-radius: 12px;
+
+    &--photo {
+      max-width: min-content;
+      padding: 0;
+      border: 1px solid $light-gray-1;
+
+      .chat-section__img {
+        width: 316px;
+        height: 211px;
+        cursor: pointer;
+      }
+
+      .chat-section__time {
+        background: rgba(82, 82, 82, 0.5);
+        border-radius: 30px;
+        color: $white;
+        padding: 2px 7px;
+      }
+    }
+
+    &--my-message {
+      margin-left: auto;
+      width: min-content;
+      min-width: 114px;
+      margin-top: 30px;
+      background-color: $light-gray-3;
+
+      .chat-section__time {
+        color: $blue;
+
+        &::before {
+          position: absolute;
+          content: "";
+          bottom: 0;
+          left: -14px;
+          width: 10px;
+          height: 5px;
+          background-image: url("../asserts/double-tick-icon.svg");
+        }
+      }
+    }
+  }
+
+  &__text {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 15px;
+    color: $dark-gray;
+  }
+
+  &__time {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    font-weight: 500;
+    font-size: 9px;
+    line-height: 9px;
+    color: $gray;
+  }
+
+  &__form {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 11px 20px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    border-top: 1px solid $light-gray-1;
+    background-color: $white;
+  }
+
+  &__clip {
+    width: 32px;
+    height: 32px;
+    border: none;
+    margin-right: 10px;
+    padding: 0;
+    cursor: pointer;
+    background-color: inherit;
+
+    &:hover,
+    &:focus {
+      opacity: 0.6;
+    }
+
+    &:active {
+      opacity: 0.4;
+    }
+  }
+
+  &__input {
+    padding: 10px 20px;
+    width: 100%;
+    background-color: $light-gray-4;
+    border-radius: 30px;
+    border: none;
+
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 12px;
+    color: $gray;
+  }
+
+  &__submit {
+    width: 28px;
+    height: 28px;
+    background-color: $blue;
+    border-radius: 50%;
+    border: none;
+    margin-left: 10px;
+    padding: 0;
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+      opacity: 0.6;
+    }
+
+    &:active {
+      opacity: 0.4;
+    }
+  }
+
+  &__submit-icon {
+    margin: auto;
+    display: block;
+  }
+}

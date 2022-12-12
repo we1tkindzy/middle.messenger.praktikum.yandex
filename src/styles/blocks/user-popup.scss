@@ -1,0 +1,108 @@
+.user-popup {
+  background-color: $black-bg;
+  height: 100%;
+
+  &__wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: $white;
+    box-shadow: $black-box-shadow;
+    border-radius: 12px;
+    padding: 40px 30px;
+    width: 340px;
+  }
+
+  &__close {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    top: 10px;
+    right: 10px;
+    border: none;
+    cursor: pointer;
+    background-color: inherit;
+
+    &:hover,
+    &:focus {
+      opacity: 0.6;
+    }
+
+    &:active {
+      opacity: 0.4;
+    }
+  }
+
+  &__close-icon {
+    width: 25px;
+    height: 25px;
+  }
+
+  &__title {
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 20px;
+    text-align: center;
+    color: $dark-gray;
+    margin-bottom: 50px;
+  }
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 7px;
+    margin-bottom: 16px;
+    border-bottom: 1px solid $blue;
+
+    &:hover,
+    &:focus {
+      border-bottom: 1px solid rgba($blue, 0.6);
+    }
+
+    &:active {
+      border-bottom: 1px solid rgba($blue, 0.4);
+    }
+  }
+
+  &__label {
+    font-weight: 500;
+    font-size: 9px;
+    line-height: 9px;
+    color: $gray;
+    margin-bottom: 8px;
+  }
+
+  &__input {
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 13px;
+    color: $dark-gray;
+    border: none;
+  }
+
+  &__submit {
+    margin-top: 33px;
+    background: $blue;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 13px;
+    text-align: center;
+    color: $white;
+    padding: 12px;
+    width: 100%;
+    border: none;
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+      opacity: 0.6;
+    }
+
+    &:active {
+      opacity: 0.4;
+    }
+  }
+}
