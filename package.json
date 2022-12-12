@@ -6,7 +6,7 @@
     "node": "v14.17.6"
   },
   "scripts": {
-    "dev": "parcel src/pages/index.hbs --no-cache",
+    "dev": "parcel src/pages/index.hbs --no-cache --open",
     "build": "parcel build src/pages/index.hbs",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

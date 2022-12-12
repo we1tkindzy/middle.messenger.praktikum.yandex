@@ -1,51 +1,24 @@
-.user-popup {
-  background-color: rgba($black, 0.4);
-
+.authorization {
   &__wrapper {
+    background-color: $white;
+    box-shadow: $black-box-shadow;
+    border-radius: 12px;
+    padding: 50px 30px 30px;
+    width: 340px;
+
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: $white;
-    box-shadow: 0px 0px 6px rgba($black, 0.14);
-    border-radius: 12px;
-    padding: 40px 30px;
-    width: 340px;
-  }
-
-  &__close {
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    padding: 0;
-    top: 10px;
-    right: 10px;
-    border: none;
-    cursor: pointer;
-    background-color: inherit;
-    
-    &:hover,
-    &:focus {
-      opacity: 0.6;
-    }
-
-    &:active {
-      opacity: 0.4;
-    }
-  }
-
-  &__close-icon {
-    width: 25px;
-    height: 25px;
   }
 
   &__title {
     font-weight: 500;
-    font-size: 15px;
+    font-size: 20px;
     line-height: 20px;
     text-align: center;
     color: $dark-gray;
-    margin-bottom: 50px;
+    margin-bottom: 40px;
   }
 
   &__field {
@@ -81,19 +54,47 @@
     border: none;
   }
 
-  &__submit {
-    margin-top: 33px;
-    background: $blue;
-    border-radius: 8px;
+  &__button {
+    margin-top: 160px;
+
+    &--signin {
+      margin-top: 62px;
+    }
+
     font-weight: 500;
     font-size: 13px;
     line-height: 13px;
     text-align: center;
     color: $white;
-    padding: 12px;
-    width: 100%;
-    border: none;
+
     cursor: pointer;
+
+    width: 100%;
+    background: $blue;
+    border-radius: 8px;
+    padding: 12px;
+    border: none;
+    margin-bottom: 14px;
+
+    &:hover,
+    &:focus {
+      opacity: 0.6;
+    }
+
+    &:active {
+      opacity: 0.4;
+    }
+  }
+
+  &__link {
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 11px;
+    color: $blue;
+
+    display: block;
+    width: 100%;
+    text-align: center;
 
     &:hover,
     &:focus {

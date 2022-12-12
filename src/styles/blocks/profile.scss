@@ -6,7 +6,7 @@
       margin-bottom: 97px;
       position: relative;
       cursor: pointer;
-      
+
       &:hover {
         &::before {
           position: absolute;
@@ -20,7 +20,7 @@
           line-height: 14px;
           text-align: center;
           color: $white;
-          background-color: rgba($black, 0.5);
+          background-color: $black-bg;
           border-radius: 50%;
           display: block;
           margin: auto;

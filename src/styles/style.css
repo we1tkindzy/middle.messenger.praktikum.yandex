@@ -1,13 +1,13 @@
-@import './fonts.css';
-@import './colors.scss';
-@import '../partials/authorization/authorization.scss';
-@import '../partials/error-page/error-page.scss';
-@import '../partials/chats-page/chats-page.scss';
-@import '../partials/chats-page/chats.scss';
-@import '../partials/chats-page/chat-section.scss';
-@import '../partials/user-popup/user-popup.scss';
-@import '../partials/profile/profile.scss';
-@import '../partials/file-popup/file-popup.scss';
+@import './globals/fonts.scss';
+@import './globals/colors.scss';
+@import './blocks/authorization.scss';
+@import '../components/error-page/error-page.scss';
+@import './blocks/chats-page.scss';
+@import '../components/chats/chats.scss';
+@import './blocks/chat-section.scss';
+@import './blocks/user-popup.scss';
+@import './blocks/profile.scss';
+@import './blocks/file-popup.scss';
 
 *,
 ::after,
@@ -41,7 +41,11 @@ a {
 	position: relative;
 	margin: 0;
 	height: 100%;
-	background-color: #ffffff;
+	background-color: $white;
+}
+
+.main {
+  height: 100%;
 }
 
 .visually-hidden {

@@ -1,5 +1,6 @@
-.file-popup {
-  background-color: rgba($black, 0.4);
+.user-popup {
+  background-color: $black-bg;
+  height: 100%;
 
   &__wrapper {
     position: absolute;
@@ -7,7 +8,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: $white;
-    box-shadow: 0px 0px 6px rgba($black, 0.14);
+    box-shadow: $black-box-shadow;
     border-radius: 12px;
     padding: 40px 30px;
     width: 340px;
@@ -23,7 +24,7 @@
     border: none;
     cursor: pointer;
     background-color: inherit;
-    
+
     &:hover,
     &:focus {
       opacity: 0.6;
@@ -48,38 +49,42 @@
     margin-bottom: 50px;
   }
 
-  &__label {
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 16px;
-    text-align: center;
-    text-decoration-line: underline;
-    color: $blue;
-    display: block;
-    cursor: pointer;
-    max-width: 122px;
-    margin: 0 auto;
+  &__field {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 7px;
+    margin-bottom: 16px;
+    border-bottom: 1px solid $blue;
 
     &:hover,
     &:focus {
-      opacity: 0.6;
+      border-bottom: 1px solid rgba($blue, 0.6);
     }
 
     &:active {
-      opacity: 0.4;
+      border-bottom: 1px solid rgba($blue, 0.4);
     }
   }
 
+  &__label {
+    font-weight: 500;
+    font-size: 9px;
+    line-height: 9px;
+    color: $gray;
+    margin-bottom: 8px;
+  }
+
   &__input {
-    opacity: 0;
-    visibility: hidden;
-    position: absolute;
-    
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 13px;
+    color: $dark-gray;
+    border: none;
   }
 
   &__submit {
     margin-top: 33px;
-    background-color: $blue;
+    background: $blue;
     border-radius: 8px;
     font-weight: 500;
     font-size: 13px;
@@ -99,9 +104,5 @@
     &:active {
       opacity: 0.4;
     }
-  }
-
-  &__field {
-    position: relative;
   }
 }

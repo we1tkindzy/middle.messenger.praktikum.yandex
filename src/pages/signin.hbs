@@ -51,7 +51,7 @@ data: [
   <div class="authorization__wrapper">
     <h2 class="authorization__title">Регистрация</h2>
     <form class="authorization__form" action="POST">
-      {{> input-field data=data}}
+      {{> 'components/input-field/input-field' data=data}}
 
       <button class="authorization__button authorization__button--signin" type="submit">Зарегистрироваться</button>
       <a class="authorization__link" href="./login.hbs">Войти</a>
