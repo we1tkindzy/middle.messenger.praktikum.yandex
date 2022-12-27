@@ -5,6 +5,9 @@
   "transformers": {
     "*.hbs": [
       "@anikin/parcel-transformer-handlebars"
+    ],
+    "*.{ts,tsx}": [
+      "@parcel/transformer-typescript-tsc"
     ]
   }
 }

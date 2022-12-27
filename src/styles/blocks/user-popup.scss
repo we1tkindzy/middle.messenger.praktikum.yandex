@@ -1,5 +1,5 @@
 .user-popup {
-  background-color: $black-bg;
+  background-color: var(--black-bg);
   height: 100%;
 
   &__wrapper {
@@ -7,8 +7,8 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: $white;
-    box-shadow: $black-box-shadow;
+    background-color: var(--white);
+    box-shadow: var(--black-box-shadow);
     border-radius: 12px;
     padding: 40px 30px;
     width: 340px;
@@ -45,7 +45,7 @@
     font-size: 15px;
     line-height: 20px;
     text-align: center;
-    color: $dark-gray;
+    color: var(--dark-gray);
     margin-bottom: 50px;
   }
 
@@ -54,15 +54,15 @@
     flex-direction: column;
     padding-bottom: 7px;
     margin-bottom: 16px;
-    border-bottom: 1px solid $blue;
+    border-bottom: 1px solid var(--blue);
 
     &:hover,
     &:focus {
-      border-bottom: 1px solid rgba($blue, 0.6);
+      border-bottom: 1px solid rgba(var(--blue), 0.6);
     }
 
     &:active {
-      border-bottom: 1px solid rgba($blue, 0.4);
+      border-bottom: 1px solid rgba(var(--blue), 0.4);
     }
   }
 
@@ -70,7 +70,7 @@
     font-weight: 500;
     font-size: 9px;
     line-height: 9px;
-    color: $gray;
+    color: var(--gray);
     margin-bottom: 8px;
   }
 
@@ -78,19 +78,19 @@
     font-weight: 500;
     font-size: 13px;
     line-height: 13px;
-    color: $dark-gray;
+    color: var(--dark-gray);
     border: none;
   }
 
   &__submit {
     margin-top: 33px;
-    background: $blue;
+    background: var(--blue);
     border-radius: 8px;
     font-weight: 500;
     font-size: 13px;
     line-height: 13px;
     text-align: center;
-    color: $white;
+    color: var(--white);
     padding: 12px;
     width: 100%;
     border: none;

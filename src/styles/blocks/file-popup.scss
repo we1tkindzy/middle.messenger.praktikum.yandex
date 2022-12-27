@@ -1,5 +1,5 @@
 .file-popup {
-  background-color: $black-bg;
+  background-color: var(--black-bg);
   height: 100%;
 
   &__wrapper {
@@ -7,8 +7,8 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: $white;
-    box-shadow: $black-box-shadow;
+    background-color: var(--white);
+    box-shadow: var(--black-box-shadow);
     border-radius: 12px;
     padding: 40px 30px;
     width: 340px;
@@ -45,7 +45,7 @@
     font-size: 15px;
     line-height: 20px;
     text-align: center;
-    color: $dark-gray;
+    color: var(--dark-gray);
     margin-bottom: 50px;
   }
 
@@ -55,7 +55,7 @@
     line-height: 16px;
     text-align: center;
     text-decoration-line: underline;
-    color: $blue;
+    color: var(--blue);
     display: block;
     cursor: pointer;
     max-width: 122px;
@@ -80,13 +80,13 @@
 
   &__submit {
     margin-top: 33px;
-    background-color: $blue;
+    background-color: var(--blue);
     border-radius: 8px;
     font-weight: 500;
     font-size: 13px;
     line-height: 13px;
     text-align: center;
-    color: $white;
+    color: var(--white);
     padding: 12px;
     width: 100%;
     border: none;

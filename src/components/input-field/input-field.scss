@@ -1,0 +1,33 @@
+.input-field {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 7px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--blue);
+  position: relative;
+
+  &:hover,
+  &:focus {
+    border-bottom: 1px solid var(--light-blue);
+    .authorization__input {
+     outline: none;
+    }
+  }
+
+  &__label {
+    font-weight: 500;
+    font-size: 9px;
+    line-height: 9px;
+    color: var(--gray);
+    margin-bottom: 8px;
+  }
+
+  &__input {
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 13px;
+    color: var(--dark-gray);
+    border: none;
+    outline: none;
+  }
+}
