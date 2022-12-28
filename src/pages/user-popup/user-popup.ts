@@ -1,14 +1,5 @@
 import Block from 'core/Block';
 
-const data = [
-  {
-    name: "login",
-    label: "Логин",
-    type: "text",
-    placeholder: "ivanivanov"
-  }
-];
-
 export class UserPopupPage extends Block {
   render() {
     return `<div class="user-popup">
@@ -23,14 +14,13 @@ export class UserPopupPage extends Block {
         </button>
 
         <form class="user-popup__form" action="POST">
-          ${data.map((input) =>
-            `{{{ InputField
-              type="${input.type}"
-              placeholder="${input.placeholder}"
-              name="${input.name}"
-              label="${input.label}"
-            }}}`
-          ).join(' ')}
+          {{{InputField
+            type="text"
+            placeholder="ivanivanov"
+            name="login"
+            label="Логин"
+            className="input-field"
+          }}}
 
           <button class="user-popup__submit" type="submit">Добавить</button>
         </form>

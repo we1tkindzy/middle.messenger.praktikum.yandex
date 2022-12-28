@@ -8,6 +8,8 @@
     "scss/at-mixin-pattern": null,
     "scss/dollar-variable-pattern": null,
     "scss/dollar-variable-empty-line-before": null,
-    "color-function-notation": null
+    "color-function-notation": null,
+    "at-import-partial-extension": false,
+    "value-no-vendor-prefix": false
   }
 }
