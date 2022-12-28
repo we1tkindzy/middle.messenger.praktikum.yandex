@@ -1,7 +1,5 @@
 import Block from 'core/Block';
 
-import './input.css';
-
 interface InputProps {
   onInput?: () => void;
   onFocus?: () => void;
@@ -11,9 +9,12 @@ interface InputProps {
   name?: string;
   ref?: string;
   value?: string;
+  className?: string;
 }
 
 export class Input extends Block {
+  static componentName = "Input";
+
   constructor({onInput, onFocus, onBlur, ...props}: InputProps) {
     super({...props, events: {input: onInput, focus: onFocus, blur: onBlur}});
   }
@@ -21,7 +22,7 @@ export class Input extends Block {
   protected render(): string {
     return `
       <input
-        class="input-field__input"
+        class="{{className}}"
         type="{{type}}"
         id="{{name}}"
         name="{{name}}"

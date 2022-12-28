@@ -13,35 +13,32 @@
   }
 
   &__title {
+    margin-bottom: 40px;
+    color: var(--dark-gray);
     font-weight: 500;
     font-size: 20px;
     line-height: 20px;
     text-align: center;
-    color: var(--dark-gray);
-    margin-bottom: 40px;
   }
 
   &__button {
+    width: 100%;
     margin-top: 160px;
-
-    &--signin {
-      margin-top: 62px;
-    }
-
+    margin-bottom: 14px;
+    padding: 12px;
+    color: var(--white);
     font-weight: 500;
     font-size: 13px;
     line-height: 13px;
     text-align: center;
-    color: var(--white);
-
+    background: var(--blue);
+    border: none;
+    border-radius: 8px;
     cursor: pointer;
 
-    width: 100%;
-    background: var(--blue);
-    border-radius: 8px;
-    padding: 12px;
-    border: none;
-    margin-bottom: 14px;
+    &--signin {
+      margin-top: 62px;
+    }
 
     &:hover,
     &:focus {
@@ -54,13 +51,12 @@
   }
 
   &__link {
+    display: block;
+    width: 100%;
+    color: var(--blue);
     font-weight: 500;
     font-size: 11px;
     line-height: 11px;
-    color: var(--blue);
-
-    display: block;
-    width: 100%;
     text-align: center;
 
     &:hover,

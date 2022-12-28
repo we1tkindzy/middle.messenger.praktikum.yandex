@@ -1,6 +1,6 @@
 @import './styles/globals/variables.scss';
 @import './styles/globals/fonts.scss';
-@import '/styles/blocks/authorization.scss';
+@import './styles/blocks/authorization.scss';
 @import './styles/blocks/chats-page.scss';
 @import './components/chats/chats.scss';
 @import './styles/blocks/chat-section.scss';

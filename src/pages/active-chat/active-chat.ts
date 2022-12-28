@@ -1,6 +1,35 @@
 import Block from 'core/Block';
+import { ValidateRuleType, validateForm } from 'helpers/validateForm';
 
 export class ActiveChatPage extends Block {
+  constructor() {
+    super()
+
+    this.setProps({
+      onSubmit: () => this.onSubmit(),
+      messageValue: '',
+      errormessage: '',
+    })
+  }
+
+  onSubmit() {
+    const messageEl = this.element?.querySelector('input[name="message"]') as HTMLInputElement;
+
+    const errormessage = validateForm([
+      { type: ValidateRuleType.Message, value: messageEl.value}
+    ]);
+
+
+    this.setProps({
+      messageValue: messageEl.value,
+      errormessage,
+    });
+
+    if(!errormessage) {
+      console.log(`Сообщение: ${messageEl.value}`)
+    }
+  }
+
   render() {
     return `<div class="chats-page">
       <div class="chats-page__wrapper">
@@ -66,16 +95,21 @@ export class ActiveChatPage extends Block {
                 <span class="visually-hidden">Прикрепить файл</span>
               </button>
 
-              <label class="visually-hidden" for="message">Сообщение</label>
-              <input class="chat-section__input" type="text" name="message" id="message" placeholder="Сообщение">
+              {{{InputField
+                type="text"
+                placeholder="Сообщение"
+                name="message"
+                value=messageValue
+                className="chat-section-input"
+                ref="messageInput"
+                error=errorMessage
+              }}}
 
-              <button class="chat-section__submit" type="submit">
-                <svg class="chat-section__submit-icon" width="13" height="12" viewBox="0 0 13 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <rect y="5.19995" width="11" height="1.6" fill="white"/>
-                  <path d="M7 1L11 6L7 11" stroke="white" stroke-width="1.6"/>
-                </svg>
-                <span class="visually-hidden">Отправить сообщение</span>
-              </button>
+              {{{Button
+                className="chat-section__submit"
+                svg="true"
+                onClick=onSubmit
+              }}}
             </form>
           </div>
         </div>

@@ -1,6 +1,10 @@
 export enum ValidateRuleType {
   Login = 'login',
-  Password = 'password'
+  Password = 'password',
+  Email = 'email',
+  Name = 'name',
+  Phone = 'phone',
+  Message = 'message'
 }
 
 type ValidateRule = {
@@ -36,6 +40,40 @@ export function validateForm(rules: ValidateRule[]) {
         break;
       } else if (!(value.match(/^(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]+$/))) {
         errorMessage = 'Пароль должен содержать хотя бы одну заглавную букву и цифру';
+        break;
+      }
+    }
+
+    if(type === ValidateRuleType.Name) {
+      if (value.length === 0) {
+        errorMessage = 'Поле не должно быть пустым';
+        break;
+      } else if(value.match(/[^a-zа-яё-]/iu)) {
+        errorMessage = 'Поле должно состоять только из латиницы или кириллицы';
+        break;
+      } else if (value.match(/( |^)[а-яёa-z]/g)) {
+        errorMessage = 'Первая буква должна быть заглавной';
+        break;
+      }
+    }
+
+    if(type === ValidateRuleType.Email) {
+      if(!(value.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/))) {
+        errorMessage = 'Поле должно состоять из латиницы, цифр, а также @ и .';
+        break;
+      }
+    }
+
+    if(type === ValidateRuleType.Phone) {
+      if(!(value.match(/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/))) {
+        errorMessage = 'Номер должен быть от 10 до 15 символов, состоит из цифр, может начинается с плюса';
+        break;
+      }
+    }
+
+    if(type === ValidateRuleType.Message) {
+      if (!value || value.length === 0) {
+        errorMessage = 'Сообщение не должно быть пустым';
         break;
       }
     }

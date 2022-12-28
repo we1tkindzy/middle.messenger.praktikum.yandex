@@ -4,12 +4,19 @@ import './error.scss';
 
 interface ErrorProps {
   text?: string;
+  ref?: string;
 }
 
-export class Error extends Block<ErrorProps> {
+export class Error extends Block {
+  static componentName = "Error";
+
+  constructor({...props}: ErrorProps) {
+    super({...props});
+  }
+
   protected render(): string {
     return `
-      <div class="error">{{#if text}}{{text}}{{/if}}</div>
+      <div ref="{{ref}}" class="error">{{#if text}}{{text}}{{/if}}</div>
     `
   }
 }

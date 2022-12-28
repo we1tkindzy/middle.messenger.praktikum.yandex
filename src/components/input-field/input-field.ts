@@ -2,8 +2,6 @@ import Block from 'core/Block';
 import './input-field.scss';
 
 interface InputFieldProps {
-  onInput?: () => void;
-  onFocus?: () => void;
   onBlur?: () => void;
   type?: 'text' | 'password' | 'tel' | 'email';
   placeholder?: string;
@@ -12,24 +10,19 @@ interface InputFieldProps {
   value?: string;
   ref?: string;
   error?: string;
+  className?: string;
 }
 
 export class InputField extends Block {
-  constructor(props: InputFieldProps) {
-    super({
-      ...props,
-      onBlur: (e: FocusEvent) => {
-        const inputEl = e.target as HTMLInputElement;
-        console.log(inputEl.value)
+  static componentName = "InputField";
 
-        this.refs.errorRef.setProps({ text: inputEl.value})
-      }
-    });
+  constructor(props: InputFieldProps) {
+    super({...props});
   }
 
   protected render(): string {
-    return `<div class="input-field">
-      <label class="input-field__label" for="{{name}}">{{label}}</label>
+    return `<div class="{{className}}">
+      <label class="{{className}}__label" for="{{name}}">{{label}}</label>
       {{{Input
         type=type
         id=name
@@ -37,11 +30,10 @@ export class InputField extends Block {
         placeholder=placeholder
         value=value
         ref=ref
-        onFocus=onFocus
-        onInput=onInput
+        className="{{className}}__input"
         onBlur=onBlur
       }}}
-      {{{Error ref=errorRef text=error}}}
+      {{{Error ref="errorRef" text=error}}}
     </div>`
   }
 }

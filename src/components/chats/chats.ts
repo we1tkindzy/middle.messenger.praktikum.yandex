@@ -67,6 +67,8 @@ const data = [
 ];
 
 export class Chats extends Block {
+  static componentName = "Chats";
+
   render() {
     return `<div class="chats-page__content">
       <a class="chats-page__profile" href="./profile.hbs">

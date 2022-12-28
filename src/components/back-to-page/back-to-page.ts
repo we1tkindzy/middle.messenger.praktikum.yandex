@@ -6,6 +6,8 @@ interface BackToPageProps {
 }
 
 export class BackToPage extends Block<BackToPageProps> {
+  static componentName = "BackToPage";
+
   protected render(): string {
     return `<div class="back-to-page">
       <a href="{{link}}" class="back-to-page__button">

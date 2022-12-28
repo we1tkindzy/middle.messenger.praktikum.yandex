@@ -1,65 +1,14 @@
 import Block from 'core/Block';
 import { ValidateRuleType, validateForm } from 'helpers/validateForm';
 
-const data = [
-  {
-    name: "login",
-    label: "Логин",
-    type: "text",
-    placeholder: "ivanivanov",
-    error: ""
-  },
-  {
-    name: "password",
-    label: "Пароль",
-    type: "password",
-    placeholder: "••••••"
-  }
-];
-
 export class LoginPage extends Block {
   constructor() {
     super()
 
     this.setProps({
       onSubmit: () => this.onSubmit(),
-      onInput: (e: FocusEvent) => {
-
-        const inputEl = e.target as HTMLInputElement;
-        console.log(inputEl)
-        // let loginValue = '';
-        // let passwordValue = '';
-
-        // if (inputEl.id === 'login') {
-        //   loginValue = inputEl.value;
-        // }
-        // if (inputEl.id === 'password') {
-        //   passwordValue = inputEl.value;
-        // }
-
-
-        // const errorLogin = validateForm([
-        //   { type: ValidateRuleType.Login, value: inputEl.value}
-        // ]);
-
-        // const errorPassword = validateForm([
-        //   { type: ValidateRuleType.Password, value: passwordValue},
-        // ]);
-
-        // this.setProps({
-        //   errorLogin: errorLogin,
-        //   loginValue: inputEl.value,
-        // });
-
-
-
-      },
-      onFocus: () => {
-
-      },
-      onBlur: (e: FocusEvent) => {
-        const inputEl = e.target as HTMLInputElement;
-        console.log(inputEl)
+      onBlur: (evt: Event) => {
+        const inputEl = evt.target as HTMLInputElement;
 
         if (inputEl.id === 'login') {
 
@@ -117,8 +66,6 @@ export class LoginPage extends Block {
   }
 
   render() {
-    console.log(this.refs)
-
     return `
     <section class="authorization">
       <div class="authorization__wrapper">
@@ -130,10 +77,9 @@ export class LoginPage extends Block {
             name="login"
             label="Логин"
             value=loginValue
-            onFocus=onFocus
-            onInput=onInput
+            className="input-field"
             onBlur=onBlur
-            ref=loginInput
+            ref="loginInput"
             error=errorLogin
           }}}
 
@@ -143,13 +89,12 @@ export class LoginPage extends Block {
             name="password"
             label="Пароль"
             value=passwordValue
-            onFocus=onFocus
-            onInput=onInput
+            className="input-field"
             onBlur=onBlur
             error=errorPassword
           }}}
 
-          {{{Button text="Войти" onClick=onSubmit}}}
+          {{{Button text="Войти" className="authorization__button" onClick=onSubmit}}}
           <a class="authorization__link" href="./signin">Нет аккаунта?</a>
         </form>
       </div>

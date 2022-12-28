@@ -35,16 +35,16 @@ export class ProfilePage extends Block {
 
         <div class="profile__profile-section">
           <div class="profile__avatar">
-            <img src="double-tick-icon.472d73f7.svg" alt="Аватар пользоватлея" width="40" height="40">
+            <img src="../avatar-icon.svg" alt="Аватар пользоватлея" width="40" height="40">
           </div>
 
           <h3 class="profile__name">Иван</h3>
 
           <div class="profile__info">
             ${data.map((line) =>
-              `<div class="profile__field">
-                <span class="profile__variable">${line.variable}</span>
-                <span class="profile__value">${line.value}</span>
+              `<div class="profile-field">
+                <span class="profile-field__label">${line.variable}</span>
+                <span class="profile-field__input">${line.value}</span>
               </div>`
             ).join(' ')}
           </div>

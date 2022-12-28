@@ -19,7 +19,6 @@ import Link from './components/link';
 import Input from './components/input';
 import Layout from './components/layout';
 import ErrorComponent from './components/error';
-import ControlledInput from './components/controlled-input';
 
 import Chats from './components/chats';
 import ErrorSection from './components/error-section';
@@ -28,7 +27,6 @@ import InputField from './components/input-field';
 
 registerComponent(Button);
 registerComponent(Link);
-registerComponent(ControlledInput);
 registerComponent(ErrorComponent);
 registerComponent(Input);
 registerComponent(Layout);

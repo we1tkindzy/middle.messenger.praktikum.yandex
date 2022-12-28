@@ -7,6 +7,8 @@ interface ErrorSectionProps {
 }
 
 export class ErrorSection extends Block {
+  static componentName = "ErrorSection";
+
   constructor({...props}: ErrorSectionProps) {
     super({...props});
   }

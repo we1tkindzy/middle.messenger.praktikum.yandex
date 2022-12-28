@@ -1,36 +1,6 @@
 .profile {
   height: 100%;
 
-  &--change {
-    .profile__avatar {
-      margin-bottom: 97px;
-      position: relative;
-      cursor: pointer;
-
-      &:hover {
-        &::before {
-          position: absolute;
-          content: "Поменять аватар";
-          left: 0;
-          top: 0;
-          width: 130px;
-          height: 130px;
-          font-weight: 500;
-          font-size: 13px;
-          line-height: 14px;
-          text-align: center;
-          color: var(--white);
-          background-color: var(--black-bg);
-          border-radius: 50%;
-          display: block;
-          margin: auto;
-          padding-top: 60px;
-          z-index: 5;
-        }
-      }
-    }
-  }
-
   &__wrapper {
     display: flex;
     height: 100%;
@@ -43,73 +13,77 @@
   }
 
   &__avatar {
+    position: relative;
     width: 130px;
     height: 130px;
-    border-radius: 50%;
-    background-color: var(--light-gray-4);
     margin: 0 auto;
     margin-bottom: 21px;
-    position: relative;
+    background-color: var(--light-gray-4);
+    border-radius: 50%;
 
     img {
       position: absolute;
-      display: block;
       top: 50%;
       left: 50%;
+      display: block;
       transform: translate(-50%, -50%);
     }
   }
 
   &__name {
+    margin-bottom: 50px;
+    color: var(--dark-gray);
     font-weight: 600;
     font-size: 16px;
     line-height: 16px;
     text-align: center;
-    color: var(--dark-gray);
-    margin-bottom: 50px;
   }
 
   &__info {
     margin-bottom: 50px;
   }
 
-  &__field {
+  .profile-field {
+    position: relative;
     display: flex;
     justify-content: space-between;
     padding: 10px 0;
     border-bottom: 1px solid var(--light-gray-1);
 
+    .error {
+      bottom: 1px;
+    }
+
     &:last-child {
       border-bottom: none;
     }
-  }
 
-  &__variable {
-    font-weight: 500;
-    font-size: 13px;
-    line-height: 13px;
-    color: var(--dark-gray);
-  }
+    &__label {
+      color: var(--dark-gray);
+      font-weight: 500;
+      font-size: 13px;
+      line-height: 13px;
+      text-decoration: underline;
+    }
 
-  &__value {
-    font-weight: 500;
-    font-size: 13px;
-    line-height: 13px;
-    color: var(--gray);
-    background-color: inherit;
-    border: none;
-    text-align: right;
+    &__input {
+      font-weight: 500;
+      font-size: 13px;
+      line-height: 13px;
+      text-align: right;
+      background-color: inherit;
+      border: none;
+    }
   }
 
   &__cahnge-profile,
   &__cahnge-password {
     display: block;
+    padding: 10px 0;
+    color: var(--blue);
     font-weight: 500;
     font-size: 13px;
     line-height: 13px;
-    color: var(--blue);
-
-    padding: 10px 0;
     border-bottom: 1px solid var(--light-gray-1);
 
     &:last-child {
@@ -127,15 +101,15 @@
   }
 
   &__logout {
-    border: none;
-    background-color: inherit;
+    margin-top: 10px;
     padding: 0;
+    color: var(--red);
     font-weight: 500;
     font-size: 13px;
     line-height: 13px;
-    color: var(--red);
+    background-color: inherit;
+    border: none;
     cursor: pointer;
-    margin-top: 10px;
 
     &:hover,
     &:focus {
@@ -148,19 +122,18 @@
   }
 
   &__submit {
-    width: 280px;
     display: block;
+    width: 280px;
     margin: 0 auto;
-    background: var(--blue);
-    border-radius: 8px;
     padding: 12px;
+    color: var(--white);
     font-weight: 500;
     font-size: 13px;
     line-height: 13px;
     text-align: center;
-    color: var(--white);
+    background: var(--blue);
     border: none;
-
+    border-radius: 8px;
     cursor: pointer;
 
     &:hover,
@@ -170,6 +143,36 @@
 
     &:active {
       opacity: 0.4;
+    }
+  }
+
+  &--change {
+    .profile__avatar {
+      position: relative;
+      margin-bottom: 97px;
+      cursor: pointer;
+
+      &:hover {
+        &::before {
+          position: absolute;
+          top: 0;
+          left: 0;
+          z-index: 5;
+          display: block;
+          width: 130px;
+          height: 130px;
+          margin: auto;
+          padding-top: 60px;
+          color: var(--white);
+          font-weight: 500;
+          font-size: 13px;
+          line-height: 14px;
+          text-align: center;
+          background-color: var(--black-bg);
+          border-radius: 50%;
+          content: "Поменять аватар";
+        }
+      }
     }
   }
 }

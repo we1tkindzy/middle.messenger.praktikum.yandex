@@ -1,19 +1,19 @@
 @font-face {
-  font-family: 'Inter', sans-serif;
-  src:
-    url("./asserts/Inter-SemiBold.woff2") format("woff2"),
-    url("./asserts/Inter-SemiBold.woff") format("woff");
-  font-style: normal;
   font-weight: 500;
+  font-family: Inter, sans-serif;
+  font-style: normal;
+  src:
+    url("./assets/Inter-SemiBold.woff2") format("woff2"),
+    url("./assets/Inter-SemiBold.woff") format("woff");
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Inter', sans-serif;
-  src:
-    url("./asserts/Inter-Medium.woff2") format("woff2"),
-    url("./asserts/Inter-Medium.woff") format("woff");
-  font-style: normal;
   font-weight: 600;
+  font-family: Inter, sans-serif;
+  font-style: normal;
+  src:
+    url("./assets/Inter-Medium.woff2") format("woff2"),
+    url("./assets/Inter-Medium.woff") format("woff");
   font-display: swap;
 }
