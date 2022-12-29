@@ -16,7 +16,7 @@ interface InputFieldProps {
 export class InputField extends Block {
   static componentName = "InputField";
 
-  constructor(props: InputFieldProps) {
+  constructor({...props}: InputFieldProps) {
     super({...props});
   }
 
@@ -28,12 +28,10 @@ export class InputField extends Block {
         id=name
         name=name
         placeholder=placeholder
-        value=value
-        ref=ref
         className="{{className}}__input"
         onBlur=onBlur
       }}}
-      {{{Error ref="errorRef" text=error}}}
+      {{{Error}}}
     </div>`
   }
 }

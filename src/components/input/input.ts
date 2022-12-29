@@ -20,16 +20,14 @@ export class Input extends Block {
   }
 
   protected render(): string {
-    return `
-      <input
-        class="{{className}}"
-        type="{{type}}"
-        id="{{name}}"
-        name="{{name}}"
-        placeholder="{{placeholder}}"
-        value="{{value}}"
-        ref="{{ref}}"
-      >
-    `
+    return `<input
+      class="{{className}}"
+      type="{{type}}"
+      id="{{name}}"
+      name="{{name}}"
+      placeholder="{{placeholder}}"
+      value="{{value}}"
+      ref="{{ref}}"
+    >`
   }
 }

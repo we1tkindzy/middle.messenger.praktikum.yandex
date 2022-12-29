@@ -6,19 +6,19 @@ export class ChangePasswordPage extends Block {
     super()
 
     this.setProps({
-      onSubmit: () => this.onSubmit(),
+      onSubmit: (evt: SubmitEvent) => this.onSubmit(evt),
       onBlur: (evt: Event) => {
         const inputEl = evt.target as HTMLInputElement;
+        let errorEl = inputEl.parentNode?.querySelector('.error');
 
         if (inputEl.id === 'old_password') {
           const errorOldPassword = validateForm([
             { type: ValidateRuleType.Password, value: inputEl.value}
           ]);
 
-          this.setProps({
-            errorOldPassword,
-            oldPasswordValue: inputEl.value,
-          });
+          if(errorEl) {
+            errorEl.textContent = errorOldPassword;
+          }
         }
 
         if (inputEl.id === 'new_password') {
@@ -26,10 +26,9 @@ export class ChangePasswordPage extends Block {
             { type: ValidateRuleType.Password, value: inputEl.value},
           ]);
 
-          this.setProps({
-            errorNewPassword,
-            newPasswordValue: inputEl.value,
-          });
+          if(errorEl) {
+            errorEl.textContent = errorNewPassword;
+          }
         }
 
         if (inputEl.id === 'new_password_check') {
@@ -37,25 +36,22 @@ export class ChangePasswordPage extends Block {
             { type: ValidateRuleType.Password, value: inputEl.value},
           ]);
 
-          this.setProps({
-            errorNewPasswordCheck,
-            newPasswordCheckValue: inputEl.value,
-          });
+          if(errorEl) {
+            errorEl.textContent = errorNewPasswordCheck;
+          }
         }
       },
-      oldPasswordValue: '',
-      errorOldPassword: '',
-      newPasswordValue: '',
-      errorNewPassword: '',
-      newPasswordCheckValue: '',
-      errorNewPasswordCheck: '',
     })
   }
 
-  onSubmit() {
-    const oldPasswordEl = this.element?.querySelector('input[name="old_password"]') as HTMLInputElement
-    const newPasswordEl = this.element?.querySelector('input[name="new_password"]') as HTMLInputElement
-    const newPasswordCheckEl = this.element?.querySelector('input[name="new_password_check"]') as HTMLInputElement
+  onSubmit(evt: SubmitEvent) {
+    evt.preventDefault();
+    const oldPasswordEl = this.element?.querySelector('input[name="old_password"]') as HTMLInputElement;
+    let oldPasswordElError = oldPasswordEl.parentNode?.querySelector('.error');
+    const newPasswordEl = this.element?.querySelector('input[name="new_password"]') as HTMLInputElement;
+    let ewPasswordElError = newPasswordEl.parentNode?.querySelector('.error');
+    const newPasswordCheckEl = this.element?.querySelector('input[name="new_password_check"]') as HTMLInputElement;
+    let newPasswordCheckElError = newPasswordCheckEl.parentNode?.querySelector('.error');
 
 
     const errorOldPassword = validateForm([
@@ -70,22 +66,31 @@ export class ChangePasswordPage extends Block {
       { type: ValidateRuleType.Password, value: newPasswordCheckEl.value}
     ]);
 
-    if (newPasswordEl.value !== newPasswordCheckEl.value) {
-      errorNewPasswordCheck = "Пароли должны совпадать";
+    oldPasswordEl.value = oldPasswordEl.value;
+    newPasswordEl.value = newPasswordEl.value;
+    newPasswordCheckEl.value = newPasswordCheckEl.value;
+
+    if(oldPasswordElError) {
+      oldPasswordElError.textContent = errorOldPassword;
     }
 
+    if(ewPasswordElError) {
+      ewPasswordElError.textContent = errorNewPassword;
+    }
 
-    this.setProps({
-      oldPasswordValue: oldPasswordEl.value,
-      errorOldPassword,
-      newPasswordValue: newPasswordEl.value,
-      errorNewPassword,
-      newPasswordCheckValue: newPasswordCheckEl.value,
-      errorNewPasswordCheck,
-    });
+    if(newPasswordCheckElError) {
+      newPasswordCheckElError.textContent = errorNewPasswordCheck;
+    }
+
+    if (newPasswordCheckElError && newPasswordEl.value !== newPasswordCheckEl.value) {
+      newPasswordCheckElError.textContent = "Пароли должны совпадать";
+    }
 
     if(!errorOldPassword && !errorNewPassword && !errorNewPasswordCheck) {
-      console.log(`Старый пароль - ${oldPasswordEl.value}, Новый пароль - ${newPasswordEl.value}, Повтор нового пароля - ${newPasswordCheckEl.value}`)
+      console.log(`Старый пароль - ${oldPasswordEl.value}, Новый пароль - ${newPasswordEl.value}, Повтор нового пароля - ${newPasswordCheckEl.value}`);
+      oldPasswordEl.value = '';
+      newPasswordEl.value = '';
+      newPasswordCheckEl.value = '';
     }
   }
 
