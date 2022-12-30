@@ -1,0 +1,48 @@
+.error-section {
+  &__wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200px;
+    padding: 10px;
+    transform: translate(-50%, -50%);
+  }
+
+  &__title {
+    margin-bottom: 20px;
+    color: var(--dark-gray);
+    font-weight: 500;
+    font-size: 40px;
+    line-height: 40px;
+    text-align: center;
+  }
+
+  &__description {
+    width: 100%;
+    margin-bottom: 70px;
+    color: var(--dark-gray);
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 20px;
+    text-align: center;
+  }
+
+  &__link {
+    display: block;
+    width: 100%;
+    color: var(--blue);
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 11px;
+    text-align: center;
+
+    &:hover,
+    &:focus {
+      opacity: 0.6;
+    }
+
+    &:active {
+      opacity: 0.4;
+    }
+  }
+}
