@@ -8,7 +8,7 @@ import initRouter from './router';
 
 import ChatsPage from './pages/chats/chats';;
 
-import './style.css';
+import './style.scss';
 
 import Button from 'components/button/button';
 import Input from 'components/input/input';
