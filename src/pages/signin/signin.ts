@@ -1,9 +1,16 @@
 import Block from 'core/Block';
 import { ValidateRuleType, validateForm } from 'helpers/validateForm';
+import withRouter from 'utils/withRouter';
+import withStore from 'utils/withStore';
+import { register } from 'service/auth';
 
-export class SigninPage extends Block {
-  constructor() {
-    super()
+interface SigninPageProps {
+  onClick?: () => void;
+  onNavigate?: () => void;
+}
+class SigninPage extends Block {
+  constructor(props: SigninPageProps) {
+    super(props)
 
     this.setProps({
       onSubmit: (evt: SubmitEvent) => this.onSubmit(evt),
@@ -81,6 +88,7 @@ export class SigninPage extends Block {
           }
         }
       },
+      navigateToLogin: () => this.props.router.go('/login'),
     })
   }
 
@@ -166,11 +174,20 @@ export class SigninPage extends Block {
     }
 
     if (passwordCheckElError && passwordCheckEl.value !== passwordEl.value) {
-      passwordCheckElError.textContent = "Пароли должны совпадать";
+      passwordCheckElError.textContent = 'Пароли должны совпадать';
     }
 
     if(!errorEmail && !errorLogin && !errorFirstName && !errorSecondName && !errorPhone && !errorPassword && !errorPasswordCheck) {
       console.log(`Почта - ${emailEl.value}, Логин - ${loginEl.value}, Имя - ${firstNameEl.value}, Фамилия - ${secondNameEl.value}, Телефон - ${phoneEl.value}, Пароль - ${passwordEl.value}, Повтор пароля - ${passwordCheckEl.value}`);
+      const registerData = {
+        email: (document.querySelector('input[name="email"]') as HTMLInputElement).value,
+        login: (document.querySelector('input[name="login"]') as HTMLInputElement).value,
+        first_name: (document.querySelector('input[name="first_name"]') as HTMLInputElement).value,
+        second_name: (document.querySelector('input[name="second_name"]') as HTMLInputElement).value,
+        phone: (document.querySelector('input[name="phone"]') as HTMLInputElement).value,
+        password: (document.querySelector('input[name="password"]') as HTMLInputElement).value,
+      };
+      this.props.store.dispatch(register, registerData);
       emailEl.value = '';
       loginEl.value = '';
       firstNameEl.value = '';
@@ -186,7 +203,7 @@ export class SigninPage extends Block {
       <div class="authorization__wrapper">
         <h2 class="authorization__title">Регистрация</h2>
         <form class="authorization__form">
-          {{{InputField
+          {{{ InputField
             type="email"
             placeholder="pochta@yandex.ru"
             name="email"
@@ -195,7 +212,7 @@ export class SigninPage extends Block {
             onBlur=onBlur
           }}}
 
-          {{{InputField
+          {{{ InputField
             type="text"
             placeholder="ivanivanov"
             name="login"
@@ -204,7 +221,7 @@ export class SigninPage extends Block {
             onBlur=onBlur
           }}}
 
-          {{{InputField
+          {{{ InputField
             type="text"
             placeholder="Иван"
             name="first_name"
@@ -213,7 +230,7 @@ export class SigninPage extends Block {
             onBlur=onBlur
           }}}
 
-          {{{InputField
+          {{{ InputField
             type="text"
             placeholder="Иванов"
             name="second_name"
@@ -222,7 +239,7 @@ export class SigninPage extends Block {
             onBlur=onBlur
           }}}
 
-          {{{InputField
+          {{{ InputField
             type="tel"
             placeholder="+79099673030"
             name="phone"
@@ -231,7 +248,7 @@ export class SigninPage extends Block {
             onBlur=onBlur
           }}}
 
-          {{{InputField
+          {{{ InputField
             type="password"
             placeholder="••••••"
             name="password"
@@ -240,7 +257,7 @@ export class SigninPage extends Block {
             onBlur=onBlur
           }}}
 
-          {{{InputField
+          {{{ InputField
             type="password"
             placeholder="••••••"
             name="password_check"
@@ -249,10 +266,24 @@ export class SigninPage extends Block {
             onBlur=onBlur
           }}}
 
-          {{{Button text="Зарегистрироваться" className="authorization__button authorization__button--signin" onClick=onSubmit}}}
-          <a class="authorization__link" href="./login">Войти</a>
+          {{{Button
+            text="Зарегистрироваться"
+            className="authorization__button authorization__button--signin"
+            onClick=onSubmit
+          }}}
+          {{{Button
+            text="Войти"
+            className="authorization__link"
+            onNavigate=navigateToLogin
+          }}}
         </form>
       </div>
+
+      {{#if ${!!window.store.getState().isLoading} }}
+        {{{ Loader }}}
+      {{/if}}
     </section>`
   }
 }
+
+export default withRouter(withStore(SigninPage));

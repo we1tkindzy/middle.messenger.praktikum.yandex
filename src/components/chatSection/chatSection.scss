@@ -1,0 +1,280 @@
+.chat-section {
+  position: relative;
+
+  &__info {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    color: var(--gray);
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 12px;
+    text-align: center;
+    transform: translate(-50%, -50%);
+  }
+
+  &__wrapper {
+    height: 100vh;
+    padding: 20px 20px 11px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 48px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--light-gray-1);
+  }
+
+  &__group {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  &__avatar-img {
+    width: 34px;
+    height: 34px;
+    margin-right: 10px;
+  }
+
+  &__group-info {
+    flex-direction: column;
+  }
+
+  &__group-name {
+    color: var(--dark-gray);
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 13px;
+  }
+
+  &__users {
+    color: var(--gray);
+    font-weight: 500;
+    font-size: 9px;
+    line-height: 13px;
+  }
+
+  &__more {
+    background-color: inherit;
+    border: none;
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+      opacity: 0.6;
+    }
+
+    &:active {
+      opacity: 0.4;
+    }
+  }
+
+  &__menu {
+    position: relative;
+  }
+
+  &__links {
+    position: absolute;
+    z-index: 100;
+    background-color: var(--white);
+    padding: 10px;
+    min-width: 212px;
+    right: -16px;
+    top: calc(100% + 8px);
+    border-radius: 6px;
+    display: none;
+    box-shadow: var(--black-box-shadow);
+
+    &--active {
+      display: block;
+    }
+  }
+
+  &__links-list {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  &__links-item {
+    margin-bottom: 10px;
+
+    &:last-of-type {
+      margin-bottom: unset;
+    }
+  }
+
+  &__link {
+    color: var(--blue);
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 11px;
+    border: none;
+    background-color: inherit;
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+      opacity: 0.6;
+    }
+
+    &:active {
+      opacity: 0.4;
+    }
+  }
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow-y: auto;
+  }
+
+  &__name {
+    color: var(--dark-gray);
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 13px;
+    margin-bottom: 5px;
+  }
+
+  &__time {
+    right: 10px;
+    bottom: 10px;
+    color: var(--gray);
+    font-weight: 500;
+    font-size: 9px;
+    line-height: 9px;
+    text-align: end;
+  }
+
+  &__message {
+    position: relative;
+    max-width: 402px;
+    align-self: flex-start;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding: 11px;
+    background-color: var(--light-gray-2);
+    border-radius: 12px;
+
+    &--photo {
+      max-width: min-content;
+      padding: 0;
+      border: 1px solid var(--light-gray-1);
+
+      .chat-section__img {
+        width: 316px;
+        height: 211px;
+        cursor: pointer;
+      }
+
+      .chat-section__time {
+        padding: 2px 7px;
+        color: var(--white);
+        background: rgb(82 82 82 / 50%);
+        border-radius: 30px;
+      }
+    }
+
+    &--my-message {
+      margin-left: auto;
+      background-color: var(--light-gray-3);
+
+      .chat-section__time {
+        color: var(--blue);
+      }
+    }
+  }
+
+  &__text {
+    color: var(--dark-gray);
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 15px;
+    margin-bottom: 2px;
+    word-break: break-all;
+  }
+
+  &__form {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 11px 20px;
+    background-color: var(--white);
+    border-top: 1px solid var(--light-gray-1);
+  }
+
+  &__clip {
+    width: 32px;
+    height: 32px;
+    margin-right: 10px;
+    padding: 0;
+    background-color: inherit;
+    border: none;
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+      opacity: 0.6;
+    }
+
+    &:active {
+      opacity: 0.4;
+    }
+  }
+
+  .chat-section-input {
+    width: 100%;
+    position: relative;
+
+    &__input {
+      width: 100%;
+      padding: 10px 20px;
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 12px;
+      background-color: var(--light-gray-4);
+      border: none;
+      border-radius: 30px;
+
+    }
+
+    .error {
+      bottom: 0;
+      top: -12px;
+      left: 20px;
+    }
+  }
+
+  &__submit {
+    width: 28px;
+    height: 28px;
+    margin-left: 10px;
+    padding: 0;
+    background-color: var(--blue);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+      opacity: 0.6;
+    }
+
+    &:active {
+      opacity: 0.4;
+    }
+  }
+
+  &__submit-icon {
+    display: block;
+    margin: auto;
+  }
+}

@@ -7,7 +7,7 @@ interface ErrorProps {
   ref?: string;
 }
 
-export class Error extends Block {
+class Error extends Block {
   static componentName = "Error";
 
   constructor({...props}: ErrorProps) {
@@ -15,8 +15,8 @@ export class Error extends Block {
   }
 
   protected render(): string {
-    return `
-      <div ref="{{ref}}" class="error">{{#if text}}{{text}}{{/if}}</div>
-    `
+    return `<div ref="{{ref}}" class="error">{{#if text}}{{text}}{{/if}}</div>`;
   }
 }
+
+export default Error;

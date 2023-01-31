@@ -1,9 +1,18 @@
 import Block from 'core/Block';
 import { ValidateRuleType, validateForm } from 'helpers/validateForm';
+import withRouter from 'utils/withRouter';
+import withStore from 'utils/withStore';
+import { login } from 'service/auth';
 
-export class LoginPage extends Block {
-  constructor() {
-    super()
+type LoginPageProps = {
+  onNavigate?: () => void;
+  onSubmit?: (evt: SubmitEvent) => void;
+  onBlur?: (evt: Event) => void;
+};
+
+class LoginPage extends Block {
+  constructor(props: LoginPageProps) {
+    super(props)
 
     this.setProps({
       onSubmit: (evt: SubmitEvent) => this.onSubmit(evt),
@@ -32,12 +41,12 @@ export class LoginPage extends Block {
           }
         }
       },
+      onNavigateToSignin: () => this.props.router.go('/signin'),
     });
   }
 
   onSubmit(evt: SubmitEvent) {
     evt.preventDefault();
-
     const loginEl = this.element?.querySelector('input[name="login"]') as HTMLInputElement;
     let loginElError = loginEl.parentNode?.querySelector('.error');
     const passwordEl = this.element?.querySelector('input[name="password"]') as HTMLInputElement;
@@ -64,6 +73,11 @@ export class LoginPage extends Block {
 
     if(!errorLogin && !errorPassword) {
       console.log(`Логин - ${loginEl.value}, Пароль - ${passwordEl.value}`);
+      const loginData = {
+        login: loginEl.value,
+        password: passwordEl.value,
+      };
+      this.props.store.dispatch(login, loginData);
       loginEl.value = '';
       passwordEl.value = '';
     }
@@ -74,29 +88,42 @@ export class LoginPage extends Block {
       <div class="authorization__wrapper">
         <h2 class="authorization__title">Вход</h2>
         <form class="authorization__form">
-        {{{InputField
-          type="text"
-          placeholder="ivanivanov"
-          name="login"
-          label="Логин"
-          className="input-field"
-          onBlur=onBlur
-        }}}
+          {{{ InputField
+            type="text"
+            placeholder="ivanivanov"
+            name="login"
+            label="Логин"
+            className="input-field"
+            onBlur=onBlur
+          }}}
 
-        {{{InputField
-          type="password"
-          placeholder="••••••"
-          name="password"
-          label="Пароль"
-          className="input-field"
-          onBlur=onBlur
-        }}}
+          {{{ InputField
+            type="password"
+            placeholder="••••••"
+            name="password"
+            label="Пароль"
+            className="input-field"
+            onBlur=onBlur
+          }}}
 
-        {{{Button text="Войти" className="authorization__button" onClick=onSubmit}}}
-        <a class="authorization__link" href="./signin">Нет аккаунта?</a>
-      </form>
+          {{{ Button
+            text="Войти"
+            className="authorization__button"
+            onClick=onSubmit
+          }}}
+          {{{ Button
+            text="Нет аккаунта?"
+            className="authorization__link"
+            onNavigate=onNavigateToSignin
+          }}}
+        </form>
       </div>
-    </section>`
+
+      {{#if ${!!window.store.getState().isLoading} }}
+        {{{ Loader }}}
+      {{/if}}
+    </section>`;
   }
 }
 
+export default withRouter(withStore(LoginPage));

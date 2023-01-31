@@ -5,7 +5,7 @@
     "rootDir": "./src",
     "moduleResolution": "node",
     "baseUrl": "./src",
-    "typeRoots": ["node_modules/@types", "typings/app.d.ts", "typings/hbs.d.ts"],
+    "typeRoots": ["node_modules/@types", "typings/app.d.ts", "typings/hbs.d.ts", "typings/img.d.ts"],
     "sourceMap": true,
     "outDir": "dist",
     "esModuleInterop": true,

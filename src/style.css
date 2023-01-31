@@ -2,8 +2,6 @@
 @import './styles/globals/fonts.scss';
 @import './styles/blocks/authorization.scss';
 @import './styles/blocks/chats-page.scss';
-@import './components/chats/chats.scss';
-@import './styles/blocks/chat-section.scss';
 @import './styles/blocks/user-popup.scss';
 @import './styles/blocks/profile.scss';
 @import './styles/blocks/file-popup.scss';
@@ -34,10 +32,6 @@ a {
 	text-decoration: none;
 }
 
-#app {
-  height: 100%;
-}
-
 .container {
 	font-family: Inter, sans-serif;;
 	font-style: normal;
@@ -48,7 +42,7 @@ a {
 }
 
 .main {
-  height: 100%;
+  height: 100vh;
 }
 
 .visually-hidden {

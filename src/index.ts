@@ -1,91 +1,68 @@
-import { Block, renderDOM, registerComponent }  from './core';
-import SiteMap from './pages/site-map';
-import LoginPage from './pages/login';
-import SigninPage from './pages/signin';
-import Error500Page from './pages/500';
-import Error404Page from './pages/404';
-import SelectChatPage from './pages/select-chat';
-import ActiveChatPage from './pages/active-chat';
-import UserPopupPage from './pages/user-popup';
-import ProfilePage from './pages/profile';
-import ChangeProfilePage from './pages/change-profile';
-import ChangePasswordPage from './pages/change-password';
-import FilePopupPage from './pages/file-popup';
+import renderDOM from 'core/renderDOM';
+import registerComponent from 'core/registerComponent';
+import { Store }  from 'core/Store';
+import Router from 'core/Router/Router';
+import initApp from 'service/initApp';
+import defaultState from './store/index';
+import initRouter from './router';
+
+import ChatsPage from './pages/chats/chats';;
 
 import './style.css';
 
-import Button from './components/button';
-import Link from './components/link';
-import Input from './components/input';
-import Layout from './components/layout';
-import ErrorComponent from './components/error';
-
-import Chats from './components/chats';
-import ErrorSection from './components/error-section';
-import BackToPage from './components/back-to-page';
-import InputField from './components/input-field';
+import Button from 'components/button/button';
+import Input from 'components/input/input';
+import ErrorComponent from 'components/error/error';
+import ErrorSection from 'components/errorSection/errorSection';
+import BackToPage from 'components/backToPage/backToPage';
+import InputField from 'components/inputField/inputField';
+import Avatar from 'components/avatar/avatar';
+import Loader from 'components/loader/loader';
+import Chat from 'components/chat/chat';
+import ChatSection from 'components/chatSection/chatSection';
+import Message from 'components/message/message';
+import MessageForm from 'components/messageForm/messageForm'
 
 registerComponent(Button);
-registerComponent(Link);
 registerComponent(ErrorComponent);
 registerComponent(Input);
-registerComponent(Layout);
-
-registerComponent(Chats);
 registerComponent(ErrorSection);
 registerComponent(BackToPage);
 registerComponent(InputField);
+registerComponent(Avatar);
+registerComponent(Loader);
+registerComponent(Chat);
+registerComponent(ChatSection);
+registerComponent(Message);
+registerComponent(MessageForm);
+
+declare global {
+  interface Window {
+    store: Store<AppState>;
+    router: Router;
+  }
+}
 
 document.addEventListener("DOMContentLoaded", () => {
-  const path: string = document.location.pathname;
+  const store = new Store<AppState>(defaultState);
+  const router = new Router();
 
-  switch(path) {
-    case '/':
-      renderDOM(new SiteMap());
-      break;
+  window.router = router;
+  window.store = store;
 
-    case '/login':
-      renderDOM(new LoginPage());
-      break;
+  renderDOM(new ChatsPage({}));
 
-    case '/signin':
-      renderDOM(new SigninPage());
-      break;
+  store.on('changed', (prevState, nextState) => {
+    if (process.env.DEBUG) {
+      console.log(
+        '%cstore updated',
+        'background: #222; color: #bada55',
+        nextState,
+      );
+    }
+  });
 
-    case '/500':
-      renderDOM(new Error500Page());
-      break;
+  initRouter(router, store);
 
-    case '/404':
-      renderDOM(new Error404Page());
-      break;
-
-    case '/select-chat':
-      renderDOM(new SelectChatPage());
-      break;
-
-    case '/active-chat':
-      renderDOM(new ActiveChatPage());
-      break;
-
-    case '/user-popup':
-      renderDOM(new UserPopupPage());
-      break;
-
-    case '/profile':
-      renderDOM(new ProfilePage());
-      break;
-
-    case '/change-profile':
-      renderDOM(new ChangeProfilePage());
-      break;
-
-    case '/change-password':
-      renderDOM(new ChangePasswordPage());
-      break;
-
-    case '/file-popup':
-      renderDOM(new FilePopupPage());
-      break;
-  }
+  store.dispatch(initApp);
 });
