@@ -4,6 +4,7 @@ import withRouter from 'utils/withRouter';
 import withStore from 'utils/withStore';
 import withUser from 'utils/withUser';
 import { changePassword } from 'service/user';
+import { queryHtmlInput } from 'helpers/queryHTMLInput';
 
 interface ChangePasswordPageProps {
   onClick?: () => void;
@@ -56,11 +57,11 @@ class ChangePasswordPage extends Block {
 
   onSubmit(evt: SubmitEvent) {
     evt.preventDefault();
-    const oldPasswordEl = this.element?.querySelector('input[name="old_password"]') as HTMLInputElement;
+    const oldPasswordEl = queryHtmlInput(this.element, 'input[name="old_password"]');
     let oldPasswordElError = oldPasswordEl.parentNode?.querySelector('.error');
-    const newPasswordEl = this.element?.querySelector('input[name="new_password"]') as HTMLInputElement;
+    const newPasswordEl = queryHtmlInput(this.element, 'input[name="new_password"]');
     let ewPasswordElError = newPasswordEl.parentNode?.querySelector('.error');
-    const newPasswordCheckEl = this.element?.querySelector('input[name="new_password_check"]') as HTMLInputElement;
+    const newPasswordCheckEl = queryHtmlInput(this.element, 'input[name="new_password_check"]');
     let newPasswordCheckElError = newPasswordCheckEl.parentNode?.querySelector('.error');
 
 

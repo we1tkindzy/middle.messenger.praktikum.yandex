@@ -21,7 +21,8 @@ import Loader from 'components/loader/loader';
 import Chat from 'components/chat/chat';
 import ChatSection from 'components/chatSection/chatSection';
 import Message from 'components/message/message';
-import MessageForm from 'components/messageForm/messageForm'
+import MessageForm from 'components/messageForm/messageForm';
+import Link from 'components/link/link';
 
 registerComponent(Button);
 registerComponent(ErrorComponent);
@@ -35,6 +36,7 @@ registerComponent(Chat);
 registerComponent(ChatSection);
 registerComponent(Message);
 registerComponent(MessageForm);
+registerComponent(Link);
 
 declare global {
   interface Window {

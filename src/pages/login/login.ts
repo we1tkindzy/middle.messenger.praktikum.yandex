@@ -3,11 +3,13 @@ import { ValidateRuleType, validateForm } from 'helpers/validateForm';
 import withRouter from 'utils/withRouter';
 import withStore from 'utils/withStore';
 import { login } from 'service/auth';
+import { queryHtmlInput } from 'helpers/queryHTMLInput';
 
 type LoginPageProps = {
   onNavigate?: () => void;
   onSubmit?: (evt: SubmitEvent) => void;
   onBlur?: (evt: Event) => void;
+  formError?: () => string | null;
 };
 
 class LoginPage extends Block {
@@ -42,14 +44,15 @@ class LoginPage extends Block {
         }
       },
       onNavigateToSignin: () => this.props.router.go('/signin'),
+      formError: () => this.props.store.getState().loginFormError,
     });
   }
 
   onSubmit(evt: SubmitEvent) {
     evt.preventDefault();
-    const loginEl = this.element?.querySelector('input[name="login"]') as HTMLInputElement;
+    const loginEl = queryHtmlInput(this.element, 'input[name="login"]');
     let loginElError = loginEl.parentNode?.querySelector('.error');
-    const passwordEl = this.element?.querySelector('input[name="password"]') as HTMLInputElement;
+    const passwordEl = queryHtmlInput(this.element, 'input[name="password"]');
     let passwordElError = passwordEl.parentNode?.querySelector('.error');
 
     const errorLogin = validateForm([
@@ -78,8 +81,6 @@ class LoginPage extends Block {
         password: passwordEl.value,
       };
       this.props.store.dispatch(login, loginData);
-      loginEl.value = '';
-      passwordEl.value = '';
     }
   }
 
@@ -106,12 +107,15 @@ class LoginPage extends Block {
             onBlur=onBlur
           }}}
 
-          {{{ Button
-            text="Войти"
-            className="authorization__button"
-            onClick=onSubmit
-          }}}
-          {{{ Button
+          <div class="authorization__submit-wrapper">
+            {{{ Button
+              text="Войти"
+              className="authorization__button"
+              onClick=onSubmit
+            }}}
+            {{{ Error text=formError }}}
+          </div>
+          {{{ Link
             text="Нет аккаунта?"
             className="authorization__link"
             onNavigate=onNavigateToSignin

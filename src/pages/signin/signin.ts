@@ -3,6 +3,7 @@ import { ValidateRuleType, validateForm } from 'helpers/validateForm';
 import withRouter from 'utils/withRouter';
 import withStore from 'utils/withStore';
 import { register } from 'service/auth';
+import { queryHtmlInput } from 'helpers/queryHTMLInput';
 
 interface SigninPageProps {
   onClick?: () => void;
@@ -94,19 +95,19 @@ class SigninPage extends Block {
 
   onSubmit(evt: SubmitEvent) {
     evt.preventDefault();
-    const emailEl = this.element?.querySelector('input[name="email"]') as HTMLInputElement;
+    const emailEl = queryHtmlInput(this.element, 'input[name="email"]');
     let emailElError = emailEl.parentNode?.querySelector('.error');
-    const loginEl = this.element?.querySelector('input[name="login"]') as HTMLInputElement;
+    const loginEl = queryHtmlInput(this.element, 'input[name="login"]');
     let loginElError = loginEl.parentNode?.querySelector('.error');
-    const firstNameEl = this.element?.querySelector('input[name="first_name"]') as HTMLInputElement;
+    const firstNameEl = queryHtmlInput(this.element, 'input[name="first_name"]');
     let firstNameElError = firstNameEl.parentNode?.querySelector('.error');
-    const secondNameEl = this.element?.querySelector('input[name="second_name"]') as HTMLInputElement;
+    const secondNameEl = queryHtmlInput(this.element, 'input[name="second_name"]');
     let secondNameError = secondNameEl.parentNode?.querySelector('.error');
-    const phoneEl = this.element?.querySelector('input[name="phone"]') as HTMLInputElement;
+    const phoneEl = queryHtmlInput(this.element, 'input[name="phone"]');
     let phoneElError = phoneEl.parentNode?.querySelector('.error');
-    const passwordEl = this.element?.querySelector('input[name="password"]') as HTMLInputElement;
+    const passwordEl = queryHtmlInput(this.element, 'input[name="password"]');
     let passwordError = passwordEl.parentNode?.querySelector('.error');
-    const passwordCheckEl = this.element?.querySelector('input[name="password_check"]') as HTMLInputElement;
+    const passwordCheckEl = queryHtmlInput(this.element, 'input[name="password_check"]');
     let passwordCheckElError = passwordCheckEl.parentNode?.querySelector('.error');
 
     const errorEmail = validateForm([
@@ -180,12 +181,12 @@ class SigninPage extends Block {
     if(!errorEmail && !errorLogin && !errorFirstName && !errorSecondName && !errorPhone && !errorPassword && !errorPasswordCheck) {
       console.log(`Почта - ${emailEl.value}, Логин - ${loginEl.value}, Имя - ${firstNameEl.value}, Фамилия - ${secondNameEl.value}, Телефон - ${phoneEl.value}, Пароль - ${passwordEl.value}, Повтор пароля - ${passwordCheckEl.value}`);
       const registerData = {
-        email: (document.querySelector('input[name="email"]') as HTMLInputElement).value,
-        login: (document.querySelector('input[name="login"]') as HTMLInputElement).value,
-        first_name: (document.querySelector('input[name="first_name"]') as HTMLInputElement).value,
-        second_name: (document.querySelector('input[name="second_name"]') as HTMLInputElement).value,
-        phone: (document.querySelector('input[name="phone"]') as HTMLInputElement).value,
-        password: (document.querySelector('input[name="password"]') as HTMLInputElement).value,
+        email: emailEl.value,
+        login: loginEl.value,
+        first_name: firstNameEl.value,
+        second_name: secondNameEl.value,
+        phone: phoneEl.value,
+        password: passwordEl.value,
       };
       this.props.store.dispatch(register, registerData);
       emailEl.value = '';
@@ -266,12 +267,16 @@ class SigninPage extends Block {
             onBlur=onBlur
           }}}
 
-          {{{Button
-            text="Зарегистрироваться"
-            className="authorization__button authorization__button--signin"
-            onClick=onSubmit
-          }}}
-          {{{Button
+          <div class="authorization__submit-wrapper">
+            {{{ Button
+              text="Зарегистрироваться"
+              className="authorization__button authorization__button--signin"
+              onClick=onSubmit
+            }}}
+            {{{ Error text=formError }}}
+          </div>
+
+          {{{ Link
             text="Войти"
             className="authorization__link"
             onNavigate=navigateToLogin

@@ -6,7 +6,9 @@ import withChats from 'utils/withChats';
 import { createChat, chooseChat } from 'service/chats';
 import Messages from 'service/messages';
 import ProfileIcon from 'assets/dropdown-icon.svg'
-import dateFormatting from 'utils/dateFormatting';
+import dateFormatting from 'helpers/dateFormatting';
+import { escapeHtml } from 'helpers/escapeHTML';
+import { queryHtmlInput } from 'helpers/queryHTMLInput';
 
 import './chats.scss'
 
@@ -48,7 +50,7 @@ class ChatsPage extends Block {
 
   onSubmit(evt: any) {
     evt.preventDefault();
-    const messageEl = this.element?.querySelector('input[name="message"]') as HTMLInputElement;
+    const messageEl = queryHtmlInput(this.element, 'input[name="message"]');
     let messageElError = messageEl.parentNode?.querySelector('.error');
 
     const errormessage = validateForm([
@@ -63,7 +65,7 @@ class ChatsPage extends Block {
 
     if(!errormessage) {
       console.log(`Сообщение: ${messageEl.value}`);
-      Messages.sendMessage(messageEl.value);
+      Messages.sendMessage(escapeHtml(messageEl.value));
       messageEl.value = '';
     }
   }
@@ -83,7 +85,7 @@ class ChatsPage extends Block {
               onClick=onCreateChat
             }}}
 
-            {{{ Button
+            {{{ Link
               text="Профиль"
               svg="${ProfileIcon}"
               className="chats-page__profile"

@@ -49,6 +49,17 @@
     }
   }
 
+  &__submit-wrapper {
+    position: relative;
+
+    .error {
+      width: max-content;
+      bottom: 60px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+
   &__link {
     display: block;
     width: 100%;
@@ -59,6 +70,7 @@
     text-align: center;
     border: none;
     background-color: inherit;
+    cursor: pointer;
 
     &:hover,
     &:focus {

@@ -3,7 +3,7 @@ import EmptyAvatarImg from 'assets/empty-avatar.png';
 import MoreIcon from 'assets/more-icon.svg';
 import withStore from 'utils/withStore';
 import { addUser, deleteChat, deleteUser } from 'service/chats';
-import dateFormatting from 'utils/dateFormatting';
+import dateFormatting from 'helpers/dateFormatting';
 
 import './chatSection.scss'
 

@@ -72,12 +72,12 @@ class ProfilePage extends Block {
           </ul>
 
 
-          {{{ Button
+          {{{ Link
             text="Изменить данные"
             className="profile__cahnge-profile"
             onNavigate=navigateToProfileChange
           }}}
-          {{{ Button
+          {{{ Link
             text="Изменить пароль"
             className="profile__cahnge-password"
             onNavigate=navigateToPasswordChange

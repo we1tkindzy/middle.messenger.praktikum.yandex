@@ -4,6 +4,7 @@ import withRouter from 'utils/withRouter';
 import withStore from 'utils/withStore';
 import withUser from 'utils/withUser';
 import { changeAvatar, changeProfile } from 'service/user';
+import { queryHtmlInput } from 'helpers/queryHTMLInput';
 
 interface ChangeProfilePageProps {
   onClick?: () => void;
@@ -104,17 +105,17 @@ export class ChangeProfilePage extends Block {
 
   onSubmit(evt: SubmitEvent) {
     evt.preventDefault();
-    const emailEl = this.element?.querySelector('input[name="email"]') as HTMLInputElement;
+    const emailEl = queryHtmlInput(this.element, 'input[name="email"]');
     let emailElError = emailEl.parentNode?.querySelector('.error');
-    const loginEl = this.element?.querySelector('input[name="login"]') as HTMLInputElement;
+    const loginEl = queryHtmlInput(this.element, 'input[name="login"]');
     let loginElError = loginEl.parentNode?.querySelector('.error');
-    const firstNameEl = this.element?.querySelector('input[name="first_name"]') as HTMLInputElement;
+    const firstNameEl = queryHtmlInput(this.element, 'input[name="first_name"]');
     let firstNameElError = firstNameEl.parentNode?.querySelector('.error');
-    const secondNameEl = this.element?.querySelector('input[name="second_name"]') as HTMLInputElement;
+    const secondNameEl = queryHtmlInput(this.element, 'input[name="second_name"]');
     let secondNameError = secondNameEl.parentNode?.querySelector('.error');
-    const displayNameEl = this.element?.querySelector('input[name="display_name"]') as HTMLInputElement;
+    const displayNameEl = queryHtmlInput(this.element, 'input[name="display_name"]');
     let displayNameElError = displayNameEl.parentNode?.querySelector('.error');
-    const phoneEl = this.element?.querySelector('input[name="phone"]') as HTMLInputElement;
+    const phoneEl = queryHtmlInput(this.element, 'input[name="phone"]');
     let phoneElError = phoneEl.parentNode?.querySelector('.error');
 
 
