@@ -12,12 +12,20 @@
     "core": "./src/core",
     "components": "./src/components",
     "pages": "./src/pages",
-    "helpers": "./src/helpers"
+    "helpers": "./src/helpers",
+    "service": "./src/service",
+    "store": "./src/store",
+    "api": "./src/api",
+    "utils": "./src/utils",
+    "assets": "./src/assets"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@babel/core": "7.20.5",
+    "@babel/eslint-parser": "7.19.1",
+    "@babel/preset-env": "7.20.2",
     "@parcel/transformer-inline-string": "2.7.0",
     "@parcel/transformer-postcss": "2.7.0",
     "@parcel/transformer-sass": "2.7.0",
@@ -39,6 +47,7 @@
     "typescript": "4.6.2"
   },
   "dependencies": {
+    "babel-core": "6.26.3",
     "express": "4.18.2",
     "handlebars": "4.7.7",
     "nanoid": "4.0.0"

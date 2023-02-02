@@ -1,0 +1,20 @@
+.loader {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--black-bg);
+
+  &__text {
+    color: var(--white);
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 14px;
+  }
+}
+

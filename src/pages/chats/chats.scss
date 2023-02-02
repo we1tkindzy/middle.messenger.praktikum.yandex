@@ -1,0 +1,10 @@
+.chats {
+  &__no-chats {
+    color: var(--gray);
+    font-weight: 500;
+    font-size: 9px;
+    line-height: 13px;
+    margin: 0 auto;
+    text-align: center;
+  }
+}

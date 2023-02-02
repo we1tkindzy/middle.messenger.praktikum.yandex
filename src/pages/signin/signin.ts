@@ -1,9 +1,17 @@
 import Block from 'core/Block';
 import { ValidateRuleType, validateForm } from 'helpers/validateForm';
+import withRouter from 'utils/withRouter';
+import withStore from 'utils/withStore';
+import { register } from 'service/auth';
+import { queryHtmlInput } from 'helpers/queryHTMLInput';
 
-export class SigninPage extends Block {
-  constructor() {
-    super()
+interface SigninPageProps {
+  onClick?: () => void;
+  onNavigate?: () => void;
+}
+class SigninPage extends Block {
+  constructor(props: SigninPageProps) {
+    super(props)
 
     this.setProps({
       onSubmit: (evt: SubmitEvent) => this.onSubmit(evt),
@@ -81,24 +89,25 @@ export class SigninPage extends Block {
           }
         }
       },
+      navigateToLogin: () => this.props.router.go('/login'),
     })
   }
 
   onSubmit(evt: SubmitEvent) {
     evt.preventDefault();
-    const emailEl = this.element?.querySelector('input[name="email"]') as HTMLInputElement;
+    const emailEl = queryHtmlInput(this.element, 'input[name="email"]');
     let emailElError = emailEl.parentNode?.querySelector('.error');
-    const loginEl = this.element?.querySelector('input[name="login"]') as HTMLInputElement;
+    const loginEl = queryHtmlInput(this.element, 'input[name="login"]');
     let loginElError = loginEl.parentNode?.querySelector('.error');
-    const firstNameEl = this.element?.querySelector('input[name="first_name"]') as HTMLInputElement;
+    const firstNameEl = queryHtmlInput(this.element, 'input[name="first_name"]');
     let firstNameElError = firstNameEl.parentNode?.querySelector('.error');
-    const secondNameEl = this.element?.querySelector('input[name="second_name"]') as HTMLInputElement;
+    const secondNameEl = queryHtmlInput(this.element, 'input[name="second_name"]');
     let secondNameError = secondNameEl.parentNode?.querySelector('.error');
-    const phoneEl = this.element?.querySelector('input[name="phone"]') as HTMLInputElement;
+    const phoneEl = queryHtmlInput(this.element, 'input[name="phone"]');
     let phoneElError = phoneEl.parentNode?.querySelector('.error');
-    const passwordEl = this.element?.querySelector('input[name="password"]') as HTMLInputElement;
+    const passwordEl = queryHtmlInput(this.element, 'input[name="password"]');
     let passwordError = passwordEl.parentNode?.querySelector('.error');
-    const passwordCheckEl = this.element?.querySelector('input[name="password_check"]') as HTMLInputElement;
+    const passwordCheckEl = queryHtmlInput(this.element, 'input[name="password_check"]');
     let passwordCheckElError = passwordCheckEl.parentNode?.querySelector('.error');
 
     const errorEmail = validateForm([
@@ -166,11 +175,20 @@ export class SigninPage extends Block {
     }
 
     if (passwordCheckElError && passwordCheckEl.value !== passwordEl.value) {
-      passwordCheckElError.textContent = "Пароли должны совпадать";
+      passwordCheckElError.textContent = 'Пароли должны совпадать';
     }
 
     if(!errorEmail && !errorLogin && !errorFirstName && !errorSecondName && !errorPhone && !errorPassword && !errorPasswordCheck) {
       console.log(`Почта - ${emailEl.value}, Логин - ${loginEl.value}, Имя - ${firstNameEl.value}, Фамилия - ${secondNameEl.value}, Телефон - ${phoneEl.value}, Пароль - ${passwordEl.value}, Повтор пароля - ${passwordCheckEl.value}`);
+      const registerData = {
+        email: emailEl.value,
+        login: loginEl.value,
+        first_name: firstNameEl.value,
+        second_name: secondNameEl.value,
+        phone: phoneEl.value,
+        password: passwordEl.value,
+      };
+      this.props.store.dispatch(register, registerData);
       emailEl.value = '';
       loginEl.value = '';
       firstNameEl.value = '';
@@ -186,7 +204,7 @@ export class SigninPage extends Block {
       <div class="authorization__wrapper">
         <h2 class="authorization__title">Регистрация</h2>
         <form class="authorization__form">
-          {{{InputField
+          {{{ InputField
             type="email"
             placeholder="pochta@yandex.ru"
             name="email"
@@ -195,7 +213,7 @@ export class SigninPage extends Block {
             onBlur=onBlur
           }}}
 
-          {{{InputField
+          {{{ InputField
             type="text"
             placeholder="ivanivanov"
             name="login"
@@ -204,7 +222,7 @@ export class SigninPage extends Block {
             onBlur=onBlur
           }}}
 
-          {{{InputField
+          {{{ InputField
             type="text"
             placeholder="Иван"
             name="first_name"
@@ -213,7 +231,7 @@ export class SigninPage extends Block {
             onBlur=onBlur
           }}}
 
-          {{{InputField
+          {{{ InputField
             type="text"
             placeholder="Иванов"
             name="second_name"
@@ -222,7 +240,7 @@ export class SigninPage extends Block {
             onBlur=onBlur
           }}}
 
-          {{{InputField
+          {{{ InputField
             type="tel"
             placeholder="+79099673030"
             name="phone"
@@ -231,7 +249,7 @@ export class SigninPage extends Block {
             onBlur=onBlur
           }}}
 
-          {{{InputField
+          {{{ InputField
             type="password"
             placeholder="••••••"
             name="password"
@@ -240,7 +258,7 @@ export class SigninPage extends Block {
             onBlur=onBlur
           }}}
 
-          {{{InputField
+          {{{ InputField
             type="password"
             placeholder="••••••"
             name="password_check"
@@ -249,10 +267,28 @@ export class SigninPage extends Block {
             onBlur=onBlur
           }}}
 
-          {{{Button text="Зарегистрироваться" className="authorization__button authorization__button--signin" onClick=onSubmit}}}
-          <a class="authorization__link" href="./login">Войти</a>
+          <div class="authorization__submit-wrapper">
+            {{{ Button
+              text="Зарегистрироваться"
+              className="authorization__button authorization__button--signin"
+              onClick=onSubmit
+            }}}
+            {{{ Error text=formError }}}
+          </div>
+
+          {{{ Link
+            text="Войти"
+            className="authorization__link"
+            onNavigate=navigateToLogin
+          }}}
         </form>
       </div>
+
+      {{#if ${!!window.store.getState().isLoading} }}
+        {{{ Loader }}}
+      {{/if}}
     </section>`
   }
 }
+
+export default withRouter(withStore(SigninPage));

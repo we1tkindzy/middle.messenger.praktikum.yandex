@@ -1,28 +1,28 @@
 import Block from 'core/Block';
 
-import './link.css';
-
 interface LinkProps {
-  text: string;
-  to: string;
+  text?: string;
+  className?: string;
+  svg?: string;
+  alt?: string;
+  onNavigate?: () => void;
 }
 
-export class Link extends Block {
-  constructor(props: LinkProps) {
-    const onClick = (e: MouseEvent) => {
-      // const router = new Router();
-      // router.go(this.props.to);
+class Link extends Block {
+  static componentName = "Link";
 
-      console.log(13);
-
-      e.preventDefault();
-    }
-
-    super({...props, events: { click: onClick }});
+  constructor({text, className, svg, onNavigate}: LinkProps) {
+    super({text, className, svg, events: {click: onNavigate}});
   }
 
-  render() {
-    // language=hbs
-    return `<a href="{{to}}">{{text}}</a>`;
+  protected render(): string {
+    return `<a class="{{className}}">
+      {{text}}
+      {{#if svg}}
+        <img src={{svg}} alt={{alt}}>
+      {{/if}}
+    </a>`;
   }
 }
+
+export default Link;

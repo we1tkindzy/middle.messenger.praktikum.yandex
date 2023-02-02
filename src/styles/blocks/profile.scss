@@ -12,24 +12,6 @@
     margin-top: 60px;
   }
 
-  &__avatar {
-    position: relative;
-    width: 130px;
-    height: 130px;
-    margin: 0 auto;
-    margin-bottom: 21px;
-    background-color: var(--light-gray-4);
-    border-radius: 50%;
-
-    img {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      display: block;
-      transform: translate(-50%, -50%);
-    }
-  }
-
   &__name {
     margin-bottom: 50px;
     color: var(--dark-gray);
@@ -85,6 +67,9 @@
     font-size: 13px;
     line-height: 13px;
     border-bottom: 1px solid var(--light-gray-1);
+    background-color: inherit;
+    border: none;
+    cursor: pointer;
 
     &:last-child {
       border-bottom: none;
@@ -143,36 +128,6 @@
 
     &:active {
       opacity: 0.4;
-    }
-  }
-
-  &--change {
-    .profile__avatar {
-      position: relative;
-      margin-bottom: 97px;
-      cursor: pointer;
-
-      &:hover {
-        &::before {
-          position: absolute;
-          top: 0;
-          left: 0;
-          z-index: 5;
-          display: block;
-          width: 130px;
-          height: 130px;
-          margin: auto;
-          padding-top: 60px;
-          color: var(--white);
-          font-weight: 500;
-          font-size: 13px;
-          line-height: 14px;
-          text-align: center;
-          background-color: var(--black-bg);
-          border-radius: 50%;
-          content: "Поменять аватар";
-        }
-      }
     }
   }
 }
