@@ -13,7 +13,7 @@ type UserRequestData = {
   chatId: string
 };
 
-export class chatsAPI {
+export class ChatsAPI {
   apiInstance: HTTPTransport;
 
   constructor() {
@@ -49,4 +49,4 @@ export class chatsAPI {
   }
 }
 
-export default new chatsAPI();
+export default new ChatsAPI();

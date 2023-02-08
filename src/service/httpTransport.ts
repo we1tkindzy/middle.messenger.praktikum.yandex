@@ -22,16 +22,20 @@ const queryStringify = (data: Options) => {
   }
 
   const keys = Object.keys(data);
-  return keys.reduce((result, key, index) => {
-    return `${result}${key}=${data[key]}${index < keys.length - 1 ? '&' : ''}`;
-  }, '?');
+  return keys.reduce((result, key, index) => `${result}${key}=${(data as any)[key]}${index < keys.length - 1 ? '&' : ''}`, '?');
 };
 
 class HTTPTransport {
   URL = 'https://ya-praktikum.tech/api/v2/';
 
   request = (url: string, options: Options): Promise<any> => {
-    const {method, headers, data, timeout = 5000, isFormData} = options;
+    const {
+      method,
+      headers,
+      data,
+      timeout = 5000,
+      isFormData,
+    } = options;
 
     return new Promise((resolve, reject) => {
       const isGet = method === METHODS.GET;
@@ -44,7 +48,7 @@ class HTTPTransport {
 
       xhr.open(
         method,
-        this.URL + url
+        this.URL + url,
       );
 
       if (headers) {
@@ -82,42 +86,34 @@ class HTTPTransport {
       url,
       {
         ...options,
-        method: METHODS.GET
-      }
+        method: METHODS.GET,
+      },
     );
   };
 
-  post: HTTPMethod = (url, options = {}) => {
-    return this.request(
-      url,
-      {
-        ...options,
-        method: METHODS.POST
-      }
-    );
-  }
+  post: HTTPMethod = (url, options = {}) => this.request(
+    url,
+    {
+      ...options,
+      method: METHODS.POST,
+    },
+  );
 
+  put: HTTPMethod = (url, options = {}) => this.request(
+    url,
+    {
+      ...options,
+      method: METHODS.PUT,
+    },
+  );
 
-  put: HTTPMethod = (url, options = {}) => {
-    return this.request(
-      url,
-      {
-        ...options,
-        method: METHODS.PUT
-      }
-    );
-  }
-
-
-  delete: HTTPMethod = (url, options = {}) => {
-    return this.request(
-      url,
-      {
-        ...options,
-        method: METHODS.DELETE
-      }
-    );
-  }
+  delete: HTTPMethod = (url, options = {}) => this.request(
+    url,
+    {
+      ...options,
+      method: METHODS.DELETE,
+    },
+  );
 }
 
 export default HTTPTransport;

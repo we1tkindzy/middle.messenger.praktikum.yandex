@@ -1,4 +1,4 @@
-import EventBus from "core/EventBus";
+import EventBus from 'core/EventBus';
 
 export const EVENTS = {
   OPEN: 'open',
@@ -9,6 +9,7 @@ export const EVENTS = {
 
 export class WebSocketTransport extends EventBus {
   private socket: WebSocket | null = null;
+
   private pingInterval = 30000;
 
   constructor(private url: string) {

@@ -2,7 +2,7 @@ import userAPI from 'api/userApi';
 import { UserDTO } from 'api/types';
 import type { Dispatch } from 'core/Store';
 import transformUser from 'utils/apiTransformers';
-import apiHasError  from 'utils/apiHasError';
+import apiHasError from 'utils/apiHasError';
 
 type ProfilePayload = {
   email: string;
@@ -20,7 +20,7 @@ type PasswordPayload = {
 
 export const changeProfile = async (
   dispatch: Dispatch<AppState>,
-  state: AppState,
+  _state: AppState,
   action: ProfilePayload,
 ) => {
   dispatch({ isLoading: true });
@@ -43,7 +43,7 @@ export const changeProfile = async (
 
 export const changePassword = async (
   dispatch: Dispatch<AppState>,
-  state: AppState,
+  _state: AppState,
   action: PasswordPayload,
 ) => {
   dispatch({ isLoading: true });
@@ -60,7 +60,7 @@ export const changePassword = async (
 
 export const changeAvatar = async (
   dispatch: Dispatch<AppState>,
-  state: AppState,
+  _state: AppState,
   action: any,
 ) => {
   dispatch({ isLoading: true });

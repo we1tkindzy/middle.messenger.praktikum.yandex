@@ -1,15 +1,18 @@
 {
   "extends": [
-      "airbnb",
-      "eslint:recommended",
-      "plugin:@typescript-eslint/eslint-recommended",
-      "plugin:@typescript-eslint/recommended"
+    "airbnb-base",
+    "airbnb-typescript/base"
   ],
   "parser": "@typescript-eslint/parser",
-  "plugins": ["@typescript-eslint"],
+  "parserOptions": {
+    "requireConfigFile": false,
+    "ecmaVersion": 2018,
+    "sourceType": "module",
+    "project": "./tsconfig.json"
+  },
   "rules": {
-    "max-len": [2, 100],
-    "@typescript-eslint/no-unused-vars": 2,
+    "max-len": "off",
+    "@typescript-eslint/no-unused-vars": "off",
     "semi": "off",
     "@typescript-eslint/semi": [
       "warn"
@@ -18,6 +21,35 @@
       "error",
       {
         "allowSingleExtends": true
+      }
+    ],
+    "@typescript-eslint/no-useless-constructor": "off",
+    "no-console": "off",
+    "no-extra-boolean-cast": "off",
+    "no-return-assign":"off",
+    "no-restricted-syntax":"off",
+    "no-new":"off",
+    "prefer-destructuring":"off",
+    "no-continue":"off",
+    "no-alert": "off",
+    "global-require": "off",
+    "no-underscore-dangle": "off",
+    "no-param-reassign":"off",
+    "class-methods-use-this":"off",
+    "arrow-parens":"off",
+    "array-callback-return":"off",
+    "no-unused-vars": "off",
+    "no-useless-return": "off",
+    "no-restricted-globals": "off",
+    "no-useless-escape":"off",
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
       }
     ]
   },

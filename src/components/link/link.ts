@@ -9,13 +9,25 @@ interface LinkProps {
 }
 
 class Link extends Block {
-  static componentName = "Link";
+  static componentName = 'Link';
 
-  constructor({text, className, svg, onNavigate}: LinkProps) {
-    super({text, className, svg, events: {click: onNavigate}});
+  constructor({
+    text,
+    className,
+    svg,
+    onNavigate,
+  }: LinkProps) {
+    super({
+      text,
+      className,
+      svg,
+      events: {
+        click: onNavigate,
+      },
+    });
   }
 
-  protected render(): string {
+  render(): string {
     return `<a class="{{className}}">
       {{text}}
       {{#if svg}}

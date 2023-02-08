@@ -10,13 +10,26 @@ interface ButtonProps {
 }
 
 class Button extends Block {
-  static componentName = "Button";
+  static componentName = 'Button';
 
-  constructor({text, className, svg, onClick, onNavigate}: ButtonProps) {
-    super({text, className, svg, events: {click: [onClick, onNavigate]}});
+  constructor({
+    text,
+    className,
+    svg,
+    onClick,
+    onNavigate,
+  }: ButtonProps) {
+    super({
+      text,
+      className,
+      svg,
+      events: {
+        click: [onClick, onNavigate],
+      },
+    });
   }
 
-  protected render(): string {
+  render(): string {
     return `<button class="{{className}}" type="submit">
       {{text}}
       {{#if svg}}

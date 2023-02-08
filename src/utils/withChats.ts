@@ -1,4 +1,6 @@
-function withChats(WrappedBlock: any) {
+import { BlockClass } from 'core/Block';
+
+function withChats(WrappedBlock: BlockClass) {
   return class extends WrappedBlock {
     public static componentName = WrappedBlock.componentName || WrappedBlock.name;
 
@@ -21,7 +23,7 @@ function withChats(WrappedBlock: any) {
       super.componentWillUnmount();
       window.store.off('changed', this.__onChangeUserCallback);
     }
-  };
+  } as BlockClass;
 }
 
 export default withChats;

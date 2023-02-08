@@ -1,9 +1,9 @@
-import authAPI from 'api/auth';
-import chatsAPI from 'api/chatsApi';
+import AuthAPI from 'api/auth';
+import ChatsAPI from 'api/chatsApi';
 import { UserDTO } from 'api/types';
 import type { Dispatch } from 'core/Store';
 import transformUser from 'utils/apiTransformers';
-import apiHasError  from 'utils/apiHasError';
+import apiHasError from 'utils/apiHasError';
 
 type LoginPayload = {
   login: string;
@@ -19,21 +19,31 @@ type RegisterPayload = {
   password: string;
 };
 
+export const logout = async (dispatch: Dispatch<AppState>) => {
+  dispatch({ isLoading: true });
+
+  await AuthAPI.logout();
+
+  dispatch({ isLoading: false, user: null });
+
+  window.router.go('/login');
+};
+
 export const login = async (
   dispatch: Dispatch<AppState>,
-  state: AppState,
+  _state: AppState,
   action: LoginPayload,
 ) => {
   dispatch({ isLoading: true });
 
-  const response = await authAPI.login(action);
+  const response = await AuthAPI.login(action);
 
   if (apiHasError(response)) {
     dispatch({ isLoading: false, loginFormError: response.reason });
     return;
   }
 
-  const responseUser = await authAPI.me();
+  const responseUser = await AuthAPI.me();
 
   dispatch({ isLoading: false, loginFormError: null });
 
@@ -41,7 +51,7 @@ export const login = async (
     dispatch(logout);
     return;
   }
-  const responseChats = await chatsAPI.getChats();
+  const responseChats = await ChatsAPI.getChats();
 
   if (apiHasError(responseChats)) {
     console.log(responseChats);
@@ -58,31 +68,21 @@ export const login = async (
   window.router.go('/profile');
 };
 
-export const logout = async (dispatch: Dispatch<AppState>) => {
-  dispatch({ isLoading: true });
-
-  await authAPI.logout();
-
-  dispatch({ isLoading: false, user: null });
-
-  window.router.go('/login');
-};
-
 export const register = async (
   dispatch: Dispatch<AppState>,
-  state: AppState,
+  _state: AppState,
   action: RegisterPayload,
 ) => {
   dispatch({ isLoading: true });
 
-  const response = await authAPI.register(action);
+  const response = await AuthAPI.register(action);
 
   if (apiHasError(response)) {
     dispatch({ isLoading: false, loginFormError: response.reason });
     return;
   }
 
-  const responseUser = await authAPI.me();
+  const responseUser = await AuthAPI.me();
 
   dispatch({
     isLoading: false,

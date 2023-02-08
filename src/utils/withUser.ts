@@ -1,7 +1,9 @@
+import { BlockClass } from 'core/Block';
+
 type WithUserProps = { user: User | null };
 
-function withUser<P extends WithUserProps>(WrappedBlock: any) {
-  return class extends WrappedBlock<P> {
+function withUser<P extends WithUserProps>(WrappedBlock: BlockClass) {
+  return class extends WrappedBlock {
     public static componentName = WrappedBlock.componentName || WrappedBlock.name;
 
     constructor(props: P) {
@@ -23,7 +25,7 @@ function withUser<P extends WithUserProps>(WrappedBlock: any) {
       super.componentWillUnmount();
       window.store.off('changed', this.__onChangeUserCallback);
     }
-  };
+  } as BlockClass;
 }
 
 export default withUser;

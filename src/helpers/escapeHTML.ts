@@ -1,11 +1,11 @@
-export function escapeHtml(text: any) {
+export default function escapeHtml(text: any) {
   const map: any = {
     '&': '&amp;',
     '<': '&lt;',
     '>': '&gt;',
     '"': '&quot;',
-    "'": '&#039;'
+    "'": '&#039;',
   };
 
-  return text.replace(/[&<>"']/g, function(m: any) { return map[m]; });
+  return text.replace(/[&<>"']/g, (m: any) => map[m]);
 }

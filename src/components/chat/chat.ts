@@ -1,7 +1,7 @@
 import Block from 'core/Block';
 import EmptyAvatarImg from 'assets/empty-avatar.png';
 
-import './chat.scss'
+import './chat.scss';
 
 interface ChatProps {
   name: string;
@@ -13,10 +13,26 @@ interface ChatProps {
 }
 
 class Chat extends Block {
-  static componentName = "Chat";
+  static componentName = 'Chat';
 
-  constructor({id, name, date, message, messages, onClick}: ChatProps) {
-    super({id, name, date, message, messages, events: {click: onClick}});
+  constructor({
+    id,
+    name,
+    date,
+    message,
+    messages,
+    onClick,
+  }: ChatProps) {
+    super({
+      id,
+      name,
+      date,
+      message,
+      messages,
+      events: {
+        click: onClick,
+      },
+    });
   }
 
   render() {
@@ -27,14 +43,14 @@ class Chat extends Block {
       <div class="chat__info">
         <div class="chat__mesh">
           <p class="chat__name">{{name}}</p>
-          {{#if ${this.props.message !== "undefined"} }}
+          {{#if ${this.props.message !== 'undefined'} }}
             <p class="chat__time">{{date}}</p>
           {{/if}}
         </div>
 
-        {{#if ${this.props.message !== "undefined"} }}
+        {{#if ${this.props.message !== 'undefined'} }}
           <p class="chat__text">{{message}}</p>
-          {{#if ${this.props.messages !== "0"} }}
+          {{#if ${this.props.messages !== '0'} }}
             <div class="chat__alert">{{messages}}</div>
           {{/if}}
         {{else}}

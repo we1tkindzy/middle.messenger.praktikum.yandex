@@ -2,7 +2,7 @@ import Block from 'core/Block';
 import './loader.scss';
 
 class Loader extends Block {
-  static componentName = "Loader";
+  static componentName = 'Loader';
 
   render() {
     return `<div class="loader">

@@ -27,17 +27,17 @@ class Messages {
     });
   }
 
-  private async storeMessages(messages: Message | Array<Message>): Promise<void> {
+  private async storeMessages(messagesData: Message | Array<Message>): Promise<void> {
     let newMessages: Array<Message> = [];
 
-    if (Array.isArray(messages)) {
-      newMessages = messages.reverse();
+    if (Array.isArray(messagesData)) {
+      newMessages = messagesData.reverse();
     } else {
-      newMessages.push(messages);
+      newMessages.push(messagesData);
     }
 
     const currentMessages = window.store.getState().messages;
-    currentMessages.push(newMessages);
+    currentMessages.push(messagesData as Message);
 
     window.store.dispatch({ messages: currentMessages.flat() });
   }

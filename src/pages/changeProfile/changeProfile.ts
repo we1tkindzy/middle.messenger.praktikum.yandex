@@ -4,7 +4,7 @@ import withRouter from 'utils/withRouter';
 import withStore from 'utils/withStore';
 import withUser from 'utils/withUser';
 import { changeAvatar, changeProfile } from 'service/user';
-import { queryHtmlInput } from 'helpers/queryHTMLInput';
+import queryHtmlInput from 'helpers/queryHTMLInput';
 
 interface ChangeProfilePageProps {
   onClick?: () => void;
@@ -13,83 +13,83 @@ interface ChangeProfilePageProps {
 
 export class ChangeProfilePage extends Block {
   constructor(props: ChangeProfilePageProps) {
-    super({...props});
+    super({ ...props });
 
     this.setProps({
       onSubmit: (evt: SubmitEvent) => this.onSubmit(evt),
       onBlur: (evt: Event) => {
         const inputEl = evt.target as HTMLInputElement;
-        let errorEl = inputEl.parentNode?.querySelector('.error');
+        const errorEl = inputEl.parentNode?.querySelector('.error');
 
         if (inputEl.id === 'email') {
           const errorEmail = validateForm([
-            { type: ValidateRuleType.Email, value: inputEl.value}
+            { type: ValidateRuleType.Email, value: inputEl.value },
           ]);
 
-          if(errorEl) {
+          if (errorEl) {
             errorEl.textContent = errorEmail;
           }
         }
 
         if (inputEl.id === 'login') {
           const errorLogin = validateForm([
-            { type: ValidateRuleType.Login, value: inputEl.value}
+            { type: ValidateRuleType.Login, value: inputEl.value },
           ]);
 
-          if(errorEl) {
+          if (errorEl) {
             errorEl.textContent = errorLogin;
           }
         }
 
         if (inputEl.id === 'first_name') {
           const errorFirstName = validateForm([
-            { type: ValidateRuleType.Name, value: inputEl.value}
+            { type: ValidateRuleType.Name, value: inputEl.value },
           ]);
 
-          if(errorEl) {
+          if (errorEl) {
             errorEl.textContent = errorFirstName;
           }
         }
 
         if (inputEl.id === 'second_name') {
           const errorSecondName = validateForm([
-            { type: ValidateRuleType.Name, value: inputEl.value}
+            { type: ValidateRuleType.Name, value: inputEl.value },
           ]);
 
-          if(errorEl) {
+          if (errorEl) {
             errorEl.textContent = errorSecondName;
           }
         }
 
         if (inputEl.id === 'display_name') {
           const errorDisplayName = validateForm([
-            { type: ValidateRuleType.Name, value: inputEl.value},
+            { type: ValidateRuleType.Name, value: inputEl.value },
           ]);
 
-          if(errorEl) {
+          if (errorEl) {
             errorEl.textContent = errorDisplayName;
           }
         }
 
         if (inputEl.id === 'phone') {
           const errorPhone = validateForm([
-            { type: ValidateRuleType.Phone, value: inputEl.value}
+            { type: ValidateRuleType.Phone, value: inputEl.value },
           ]);
 
-          if(errorEl) {
+          if (errorEl) {
             errorEl.textContent = errorPhone;
           }
         }
       },
       navigateToProfile: () => this.props.router.go('/profile'),
-      onChangeAvatar: (evt: SubmitEvent) => this.onChangeAvatar(evt)
-    })
+      onChangeAvatar: (evt: SubmitEvent) => this.onChangeAvatar(evt),
+    });
   }
 
   onChangeAvatar(evt: SubmitEvent) {
     evt.preventDefault();
-    const avatar = document.querySelector('input[name="avatar"]');
-    const currentFile = avatar!.files[0];
+    const avatar = document.querySelector('input[name="avatar"]') as HTMLInputElement;
+    const currentFile = avatar!.files![0];
 
     const form = document.getElementById('avatar_form');
     const formData = new FormData(form as HTMLFormElement);
@@ -106,75 +106,74 @@ export class ChangeProfilePage extends Block {
   onSubmit(evt: SubmitEvent) {
     evt.preventDefault();
     const emailEl = queryHtmlInput(this.element, 'input[name="email"]');
-    let emailElError = emailEl.parentNode?.querySelector('.error');
+    const emailElError = emailEl.parentNode?.querySelector('.error');
     const loginEl = queryHtmlInput(this.element, 'input[name="login"]');
-    let loginElError = loginEl.parentNode?.querySelector('.error');
+    const loginElError = loginEl.parentNode?.querySelector('.error');
     const firstNameEl = queryHtmlInput(this.element, 'input[name="first_name"]');
-    let firstNameElError = firstNameEl.parentNode?.querySelector('.error');
+    const firstNameElError = firstNameEl.parentNode?.querySelector('.error');
     const secondNameEl = queryHtmlInput(this.element, 'input[name="second_name"]');
-    let secondNameError = secondNameEl.parentNode?.querySelector('.error');
+    const secondNameError = secondNameEl.parentNode?.querySelector('.error');
     const displayNameEl = queryHtmlInput(this.element, 'input[name="display_name"]');
-    let displayNameElError = displayNameEl.parentNode?.querySelector('.error');
+    const displayNameElError = displayNameEl.parentNode?.querySelector('.error');
     const phoneEl = queryHtmlInput(this.element, 'input[name="phone"]');
-    let phoneElError = phoneEl.parentNode?.querySelector('.error');
-
+    const phoneElError = phoneEl.parentNode?.querySelector('.error');
 
     const errorEmail = validateForm([
-      { type: ValidateRuleType.Email, value: emailEl.value}
+      { type: ValidateRuleType.Email, value: emailEl.value },
     ]);
 
     const errorLogin = validateForm([
-      { type: ValidateRuleType.Login, value: loginEl.value}
+      { type: ValidateRuleType.Login, value: loginEl.value },
     ]);
 
     const errorFirstName = validateForm([
-      { type: ValidateRuleType.Name, value: firstNameEl.value}
+      { type: ValidateRuleType.Name, value: firstNameEl.value },
     ]);
 
     const errorSecondName = validateForm([
-      { type: ValidateRuleType.Name, value: secondNameEl.value}
+      { type: ValidateRuleType.Name, value: secondNameEl.value },
     ]);
 
-    let errorDisplayName = validateForm([
-      { type: ValidateRuleType.Name, value: displayNameEl.value},
+    const errorDisplayName = validateForm([
+      { type: ValidateRuleType.Name, value: displayNameEl.value },
     ]);
 
     const errorPhone = validateForm([
-      { type: ValidateRuleType.Phone, value: phoneEl.value}
+      { type: ValidateRuleType.Phone, value: phoneEl.value },
     ]);
 
-    emailEl.value = emailEl.value;
-    loginEl.value = loginEl.value;
-    firstNameEl.value = firstNameEl.value;
-    secondNameEl.value = secondNameEl.value;
-    displayNameEl.value = displayNameEl.value;
-    phoneEl.value = phoneEl.value;
+    // emailEl.value = emailEl.value;
+    // loginEl.value = loginEl.value;
+    // firstNameEl.value = firstNameEl.value;
+    // secondNameEl.value = secondNameEl.value;
+    // displayNameEl.value = displayNameEl.value;
+    // phoneEl.value = phoneEl.value;
 
-    if(emailElError) {
+    if (emailElError) {
       emailElError.textContent = errorEmail;
     }
 
-    if(loginElError) {
+    if (loginElError) {
       loginElError.textContent = errorLogin;
     }
 
-    if(firstNameElError) {
+    if (firstNameElError) {
       firstNameElError.textContent = errorFirstName;
     }
 
-    if(secondNameError) {
+    if (secondNameError) {
       secondNameError.textContent = errorSecondName;
     }
 
-    if(displayNameElError) {
+    if (displayNameElError) {
       displayNameElError.textContent = errorDisplayName;
     }
 
-    if(phoneElError) {
+    if (phoneElError) {
       phoneElError.textContent = errorPhone;
     }
 
-    if(!errorEmail && !errorLogin && !errorFirstName && !errorSecondName && !errorDisplayName && !errorPhone) {
+    if (!errorEmail && !errorLogin && !errorFirstName && !errorSecondName && !errorDisplayName && !errorPhone) {
       console.log(`Почта - ${emailEl.value}, Логин - ${loginEl.value}, Имя - ${firstNameEl.value}, Фамилия - ${secondNameEl.value}, Имя в чате - ${displayNameEl.value}, Телефон - ${phoneEl.value}`);
 
       const profileData = {
@@ -183,7 +182,7 @@ export class ChangeProfilePage extends Block {
         first_name: firstNameEl.value,
         second_name: secondNameEl.value,
         display_name: displayNameEl.value,
-        phone: phoneEl.value
+        phone: phoneEl.value,
       };
 
       this.props.store.dispatch(changeProfile, profileData);
@@ -199,7 +198,7 @@ export class ChangeProfilePage extends Block {
 
   render() {
     if (!this.props.user) {
-      return `{{{ Loader }}}`;
+      return '{{{ Loader }}}';
     }
 
     return `<section class="profile">
@@ -263,7 +262,7 @@ export class ChangeProfilePage extends Block {
               label="Имя в чате"
               className="profile-field"
               onBlur=onBlur
-              value="${this.props.user.displayName === null ? `` : this.props.user.displayName}"
+              value="${this.props.user.displayName === null ? '' : this.props.user.displayName}"
             }}}
 
             {{{ InputField
@@ -288,7 +287,7 @@ export class ChangeProfilePage extends Block {
       {{#if ${!!window.store.getState().isLoading} }}
         {{{ Loader }}}
       {{/if}}
-    </section>`
+    </section>`;
   }
 }
 

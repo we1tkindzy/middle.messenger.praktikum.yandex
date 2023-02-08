@@ -23,7 +23,7 @@ class ProfilePage extends Block {
 
   render() {
     if (!this.props.user) {
-      return `{{{ Loader }}}`;
+      return '{{{ Loader }}}';
     }
 
     return `<section class="profile">
@@ -62,7 +62,7 @@ class ProfilePage extends Block {
 
               <li class="profile-field">
                 <span class="profile-field__label">Имя в чате</span>
-                <span class="profile-field__input">${this.props.user.displayName === null ? `` : this.props.user.displayName}</span>
+                <span class="profile-field__input">${this.props.user.displayName === null ? '' : this.props.user.displayName}</span>
               </li>
 
               <li class="profile-field">

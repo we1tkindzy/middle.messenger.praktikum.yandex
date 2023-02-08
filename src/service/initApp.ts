@@ -1,13 +1,13 @@
-import authAPI from 'api/auth';
+import AuthAPI from 'api/auth';
 import chatsApi from 'api/chatsApi';
 import { UserDTO } from 'api/types';
 import type { Dispatch } from '../core/Store';
 import transformUser from '../utils/apiTransformers';
-import apiHasError  from '../utils/apiHasError';
+import apiHasError from '../utils/apiHasError';
 
 async function initApp(dispatch: Dispatch<AppState>) {
   try {
-    const response = await authAPI.me();
+    const response = await AuthAPI.me();
 
     if (apiHasError(response)) {
       console.log(response);

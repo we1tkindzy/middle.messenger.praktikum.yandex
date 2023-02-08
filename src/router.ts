@@ -2,6 +2,7 @@ import { Store } from 'core/Store';
 import renderDOM from 'core/renderDOM';
 import Router from 'core/Router/Router';
 import { getScreenComponent, Screens } from 'utils/screenList';
+import Block from 'core/Block';
 
 const routes = [
   {
@@ -75,7 +76,7 @@ function initRouter(router: Router, store: Store<AppState>) {
 
     if (prevState.screen !== nextState.screen) {
       const Page = getScreenComponent(nextState.screen);
-      renderDOM(new Page({}));
+      renderDOM(new Page({}) as Block);
       document.title = `App / ${Page.componentName}`;
     }
   });

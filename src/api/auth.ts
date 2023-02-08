@@ -14,7 +14,7 @@ type SigninRequestData = {
   password: string;
 };
 
-export class authAPI {
+export class AuthAPI {
   apiInstance: HTTPTransport;
 
   constructor() {
@@ -38,4 +38,4 @@ export class authAPI {
   }
 }
 
-export default new authAPI();
+export default new AuthAPI();

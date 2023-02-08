@@ -1,13 +1,14 @@
 {
   "compilerOptions": {
     "target": "es2017",
+    "allowJs": true,
     "module": "commonjs",
     "rootDir": "./src",
     "moduleResolution": "node",
     "baseUrl": "./src",
     "typeRoots": ["node_modules/@types", "typings/app.d.ts", "typings/hbs.d.ts", "typings/img.d.ts"],
     "sourceMap": true,
-    "outDir": "dist",
+    "outDir": "./dist",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
@@ -16,5 +17,9 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "skipLibCheck": true
+  },
+  "include": [".env.d.ts", "./src", "./node_modules/handlebars/types", "./typings"],
+  "parserOptions": {
+    "project": "./tsconfig.json"
   }
 }

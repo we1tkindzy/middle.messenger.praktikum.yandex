@@ -1,3 +1,5 @@
+import { Screens } from 'utils/screenList';
+
 declare global {
   export type Nullable<T> = T | null;
 
@@ -71,4 +73,4 @@ declare global {
   };
 }
 
-export {}
+export {};

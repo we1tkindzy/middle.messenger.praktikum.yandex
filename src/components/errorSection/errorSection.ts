@@ -8,13 +8,13 @@ interface ErrorSectionProps {
 }
 
 class ErrorSection extends Block {
-  static componentName = "ErrorSection";
+  static componentName = 'ErrorSection';
 
-  constructor({...props}: ErrorSectionProps) {
-    super({...props});
+  constructor({ ...props }: ErrorSectionProps) {
+    super({ ...props });
   }
 
-  protected render(): string {
+  render(): string {
     return `<section class="error-section">
       <div class="error-section__wrapper">
         <h1 class="error-section__title">{{number}}</h1>

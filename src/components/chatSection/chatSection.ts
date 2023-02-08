@@ -1,11 +1,10 @@
 import Block from 'core/Block';
 import EmptyAvatarImg from 'assets/empty-avatar.png';
 import MoreIcon from 'assets/more-icon.svg';
-import withStore from 'utils/withStore';
 import { addUser, deleteChat, deleteUser } from 'service/chats';
 import dateFormatting from 'helpers/dateFormatting';
 
-import './chatSection.scss'
+import './chatSection.scss';
 
 interface ChatSectionProps {
   name: string;
@@ -14,17 +13,18 @@ interface ChatSectionProps {
 }
 
 class ChatSection extends Block {
-  static componentName = "ChatSection";
+  static componentName = 'ChatSection';
+
   static allChatUsers: Array<User>;
 
-  constructor({name, users, onSubmit}: ChatSectionProps) {
-    super({name, users, onSubmit});
+  constructor({ name, users, onSubmit }: ChatSectionProps) {
+    super({ name, users, onSubmit });
 
     this.setProps({
       showMoreMenu: () => this.showMoreMenu(),
       onDeleteChat: () => this.onDeleteChat(),
       onAddUser: () => this.onAddUser(),
-      onDeleteUser: () => this.onDeleteUser()
+      onDeleteUser: () => this.onDeleteUser(),
     });
 
     ChatSection.allChatUsers = window.store.getState().users;
@@ -133,7 +133,7 @@ class ChatSection extends Block {
                 date="${dateFormatting(el.time)}"
               }}}
             {{/if}}
-          `).join(" ")}
+          `).join(' ')}
         </div>
 
         {{{ MessageForm
@@ -144,4 +144,4 @@ class ChatSection extends Block {
   }
 }
 
-export default withStore(ChatSection);
+export default ChatSection;

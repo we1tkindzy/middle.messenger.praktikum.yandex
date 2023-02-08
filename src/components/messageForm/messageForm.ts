@@ -1,18 +1,18 @@
 import Block from 'core/Block';
-import * as ArrowIcon from 'assets/arrow-icon.svg';
-import * as ClipIcon from 'assets/clip-icon.svg';
+import ArrowIcon from 'assets/arrow-icon.svg';
+import ClipIcon from 'assets/clip-icon.svg';
 
-import './messageForm.scss'
+import './messageForm.scss';
 
 interface MessageFormProps {
   onSubmit?: () => void;
 }
 
 class MessageForm extends Block {
-  static componentName = "MessageForm";
+  static componentName = 'MessageForm';
 
-  constructor({onSubmit}: MessageFormProps) {
-    super({events: {submit: onSubmit}});
+  constructor({ onSubmit }: MessageFormProps) {
+    super({ events: { submit: onSubmit } });
   }
 
   render() {
