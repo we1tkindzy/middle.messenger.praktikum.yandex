@@ -4,9 +4,11 @@ WORKDIR /usr/src/my-app
 
 COPY package.json package-lock.json ./
 
-RUN npm install && npm run build
+RUN npm ci
 
 COPY . .
+
+RUN npm run build
 
 EXPOSE 3000
 
