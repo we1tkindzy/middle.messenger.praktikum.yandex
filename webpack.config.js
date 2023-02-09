@@ -39,7 +39,9 @@ module.exports = {
     hot: true,
     port: 3000,
     historyApiFallback: true,
+    allowedHosts: 'all',
   },
+  devtool: 'source-map',
   plugins: [
     new HtmlWebpackPlugin({
       template: 'src/index.html',
@@ -100,6 +102,7 @@ module.exports = {
     ],
   },
   performance: {
+    hints: false,
     maxEntrypointSize: 512000,
     maxAssetSize: 512000
   }
