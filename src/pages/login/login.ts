@@ -43,7 +43,7 @@ class LoginPage extends Block {
           }
         }
       },
-      onNavigateToSignin: () => this.props.router.go('/signin'),
+      onNavigateToSignin: () => this.props.router.go('/sign-up'),
       formError: () => this.props.store.getState().loginFormError,
     });
   }

@@ -12,7 +12,7 @@ describe('core/Router', () => {
     const router = new Router();
     const history = global.window.history;
 
-    router.go('/login');
+    router.go('/profile');
     expect(history.length).toEqual(2);
   });
 });

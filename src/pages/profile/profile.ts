@@ -13,10 +13,10 @@ class ProfilePage extends Block {
     super(props);
 
     this.setProps({
-      navigateToProfileChange: () => this.props.router.go('/change-profile'),
-      navigateToPasswordChange: () => this.props.router.go('/change-password'),
-      navigateToLogin: () => this.props.router.go('/login'),
-      navigateToChats: () => this.props.router.go('/'),
+      navigateToProfileChange: () => this.props.router.go('/settings'),
+      navigateToPasswordChange: () => this.props.router.go('/settings-password'),
+      navigateToLogin: () => this.props.router.go('/'),
+      navigateToChats: () => this.props.router.go('/messenger'),
       onLogout: () => this.props.store.dispatch(logout),
     });
   }

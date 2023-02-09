@@ -89,7 +89,7 @@ class SigninPage extends Block {
           }
         }
       },
-      navigateToLogin: () => this.props.router.go('/login'),
+      navigateToLogin: () => this.props.router.go('/'),
     });
   }
 

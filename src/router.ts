@@ -6,12 +6,12 @@ import Block from 'core/Block';
 
 const routes = [
   {
-    path: '/login',
+    path: '/',
     block: Screens.LoginPage,
     shouldAuthorized: false,
   },
   {
-    path: '/signin',
+    path: '/sign-up',
     block: Screens.SigninPage,
     shouldAuthorized: false,
   },
@@ -26,7 +26,7 @@ const routes = [
     shouldAuthorized: false,
   },
   {
-    path: '/',
+    path: '/messenger',
     block: Screens.ChatsPage,
     shouldAuthorized: true,
   },
@@ -36,12 +36,12 @@ const routes = [
     shouldAuthorized: true,
   },
   {
-    path: '/change-profile',
+    path: '/settings',
     block: Screens.ChangeProfilePage,
     shouldAuthorized: true,
   },
   {
-    path: '/change-password',
+    path: '/settings-password',
     block: Screens.ChangePasswordPage,
     shouldAuthorized: true,
   },
