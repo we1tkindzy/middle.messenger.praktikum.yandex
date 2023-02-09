@@ -6,7 +6,7 @@ const { DuplicatesPlugin } = require('inspectpack/plugin');
 
 module.exports = {
   mode: 'production',
-  entry: './src/index.ts',
+  entry: path.resolve(__dirname, 'src/index.ts'),
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
@@ -33,10 +33,6 @@ module.exports = {
     },
   },
   devServer: {
-    static: path.join(__dirname, 'dist'),
-    open: true,
-    compress: true,
-    hot: true,
     port: 3000,
     historyApiFallback: true,
   },
@@ -47,8 +43,6 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: 'style.css',
     }),
-    new CaseSensitivePathsPlugin(),
-    new DuplicatesPlugin(),
   ],
   module: {
     rules: [
