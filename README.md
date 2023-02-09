@@ -1,6 +1,6 @@
 ### Веб-месенджер
 [Макет](https://www.figma.com/file/jF5fFFzgGOxQeB4CmKWTiE/Chat_external_link?node-id=0%3A1&t=zquMHUAZWFSwxTwZ-0)
-[Сайт](https://web-messenger-xxqu.onrender.com/)
+[Сайт](https://web-messenger-2.onrender.com/)
 
 # На данный момент:
 - подключен TS
