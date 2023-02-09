@@ -33,7 +33,7 @@ module.exports = {
     },
   },
   devServer: {
-    static: path.resolve(__dirname, './dist'),
+    static: path.join(__dirname, 'dist'),
     open: true,
     compress: true,
     hot: true,
