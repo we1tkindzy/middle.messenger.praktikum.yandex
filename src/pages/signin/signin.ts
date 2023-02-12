@@ -3,7 +3,7 @@ import { ValidateRuleType, validateForm } from 'helpers/validateForm';
 import withRouter from 'utils/withRouter';
 import withStore from 'utils/withStore';
 import { register } from 'service/auth';
-import { queryHtmlInput } from 'helpers/queryHTMLInput';
+import queryHtmlInput from 'helpers/queryHTMLInput';
 
 interface SigninPageProps {
   onClick?: () => void;
@@ -11,166 +11,166 @@ interface SigninPageProps {
 }
 class SigninPage extends Block {
   constructor(props: SigninPageProps) {
-    super(props)
+    super(props);
 
     this.setProps({
       onSubmit: (evt: SubmitEvent) => this.onSubmit(evt),
       onBlur: (evt: Event) => {
         const inputEl = evt.target as HTMLInputElement;
-        let errorEl = inputEl.parentNode?.querySelector('.error');
+        const errorEl = inputEl.parentNode?.querySelector('.error');
 
         if (inputEl.id === 'email') {
           const errorEmail = validateForm([
-            { type: ValidateRuleType.Email, value: inputEl.value}
+            { type: ValidateRuleType.Email, value: inputEl.value },
           ]);
 
-          if(errorEl) {
+          if (errorEl) {
             errorEl.textContent = errorEmail;
           }
         }
 
         if (inputEl.id === 'login') {
           const errorLogin = validateForm([
-            { type: ValidateRuleType.Login, value: inputEl.value}
+            { type: ValidateRuleType.Login, value: inputEl.value },
           ]);
 
-          if(errorEl) {
+          if (errorEl) {
             errorEl.textContent = errorLogin;
           }
         }
 
         if (inputEl.id === 'first_name') {
           const errorFirstName = validateForm([
-            { type: ValidateRuleType.Name, value: inputEl.value}
+            { type: ValidateRuleType.Name, value: inputEl.value },
           ]);
 
-          if(errorEl) {
+          if (errorEl) {
             errorEl.textContent = errorFirstName;
           }
         }
 
         if (inputEl.id === 'second_name') {
           const errorSecondName = validateForm([
-            { type: ValidateRuleType.Name, value: inputEl.value}
+            { type: ValidateRuleType.Name, value: inputEl.value },
           ]);
 
-          if(errorEl) {
+          if (errorEl) {
             errorEl.textContent = errorSecondName;
           }
         }
 
         if (inputEl.id === 'phone') {
           const errorPhone = validateForm([
-            { type: ValidateRuleType.Phone, value: inputEl.value}
+            { type: ValidateRuleType.Phone, value: inputEl.value },
           ]);
 
-          if(errorEl) {
+          if (errorEl) {
             errorEl.textContent = errorPhone;
           }
         }
 
         if (inputEl.id === 'password') {
           const errorPassword = validateForm([
-            { type: ValidateRuleType.Password, value: inputEl.value},
+            { type: ValidateRuleType.Password, value: inputEl.value },
           ]);
 
-          if(errorEl) {
+          if (errorEl) {
             errorEl.textContent = errorPassword;
           }
         }
 
         if (inputEl.id === 'password_check') {
           const errorPasswordCheck = validateForm([
-            { type: ValidateRuleType.Password, value: inputEl.value}
+            { type: ValidateRuleType.Password, value: inputEl.value },
           ]);
 
-          if(errorEl) {
+          if (errorEl) {
             errorEl.textContent = errorPasswordCheck;
           }
         }
       },
-      navigateToLogin: () => this.props.router.go('/login'),
-    })
+      navigateToLogin: () => this.props.router.go('/'),
+    });
   }
 
   onSubmit(evt: SubmitEvent) {
     evt.preventDefault();
     const emailEl = queryHtmlInput(this.element, 'input[name="email"]');
-    let emailElError = emailEl.parentNode?.querySelector('.error');
+    const emailElError = emailEl.parentNode?.querySelector('.error');
     const loginEl = queryHtmlInput(this.element, 'input[name="login"]');
-    let loginElError = loginEl.parentNode?.querySelector('.error');
+    const loginElError = loginEl.parentNode?.querySelector('.error');
     const firstNameEl = queryHtmlInput(this.element, 'input[name="first_name"]');
-    let firstNameElError = firstNameEl.parentNode?.querySelector('.error');
+    const firstNameElError = firstNameEl.parentNode?.querySelector('.error');
     const secondNameEl = queryHtmlInput(this.element, 'input[name="second_name"]');
-    let secondNameError = secondNameEl.parentNode?.querySelector('.error');
+    const secondNameError = secondNameEl.parentNode?.querySelector('.error');
     const phoneEl = queryHtmlInput(this.element, 'input[name="phone"]');
-    let phoneElError = phoneEl.parentNode?.querySelector('.error');
+    const phoneElError = phoneEl.parentNode?.querySelector('.error');
     const passwordEl = queryHtmlInput(this.element, 'input[name="password"]');
-    let passwordError = passwordEl.parentNode?.querySelector('.error');
+    const passwordError = passwordEl.parentNode?.querySelector('.error');
     const passwordCheckEl = queryHtmlInput(this.element, 'input[name="password_check"]');
-    let passwordCheckElError = passwordCheckEl.parentNode?.querySelector('.error');
+    const passwordCheckElError = passwordCheckEl.parentNode?.querySelector('.error');
 
     const errorEmail = validateForm([
-      { type: ValidateRuleType.Email, value: emailEl.value}
+      { type: ValidateRuleType.Email, value: emailEl.value },
     ]);
 
     const errorLogin = validateForm([
-      { type: ValidateRuleType.Login, value: loginEl.value}
+      { type: ValidateRuleType.Login, value: loginEl.value },
     ]);
 
     const errorFirstName = validateForm([
-      { type: ValidateRuleType.Name, value: firstNameEl.value}
+      { type: ValidateRuleType.Name, value: firstNameEl.value },
     ]);
 
     const errorSecondName = validateForm([
-      { type: ValidateRuleType.Name, value: secondNameEl.value}
+      { type: ValidateRuleType.Name, value: secondNameEl.value },
     ]);
 
     const errorPhone = validateForm([
-      { type: ValidateRuleType.Phone, value: phoneEl.value}
+      { type: ValidateRuleType.Phone, value: phoneEl.value },
     ]);
 
     const errorPassword = validateForm([
-      { type: ValidateRuleType.Password, value: passwordEl.value},
+      { type: ValidateRuleType.Password, value: passwordEl.value },
     ]);
 
-    let errorPasswordCheck = validateForm([
-      { type: ValidateRuleType.Password, value: passwordCheckEl.value},
+    const errorPasswordCheck = validateForm([
+      { type: ValidateRuleType.Password, value: passwordCheckEl.value },
     ]);
 
-    emailEl.value = emailEl.value;
-    loginEl.value = loginEl.value;
-    firstNameEl.value = firstNameEl.value;
-    secondNameEl.value = secondNameEl.value;
-    phoneEl.value = phoneEl.value;
-    passwordEl.value = passwordEl.value;
-    passwordCheckEl.value = passwordCheckEl.value;
+    // emailEl.value = emailEl.value;
+    // loginEl.value = loginEl.value;
+    // firstNameEl.value = firstNameEl.value;
+    // secondNameEl.value = secondNameEl.value;
+    // phoneEl.value = phoneEl.value;
+    // passwordEl.value = passwordEl.value;
+    // passwordCheckEl.value = passwordCheckEl.value;
 
-    if(emailElError) {
+    if (emailElError) {
       emailElError.textContent = errorEmail;
     }
 
-    if(loginElError) {
+    if (loginElError) {
       loginElError.textContent = errorLogin;
     }
 
-    if(firstNameElError) {
+    if (firstNameElError) {
       firstNameElError.textContent = errorFirstName;
     }
 
-    if(secondNameError) {
+    if (secondNameError) {
       secondNameError.textContent = errorSecondName;
     }
 
-    if(phoneElError) {
+    if (phoneElError) {
       phoneElError.textContent = errorPhone;
     }
 
-    if(passwordError) {
+    if (passwordError) {
       passwordError.textContent = errorPassword;
     }
 
-    if(passwordCheckElError) {
+    if (passwordCheckElError) {
       passwordCheckElError.textContent = errorPasswordCheck;
     }
 
@@ -178,7 +178,7 @@ class SigninPage extends Block {
       passwordCheckElError.textContent = 'Пароли должны совпадать';
     }
 
-    if(!errorEmail && !errorLogin && !errorFirstName && !errorSecondName && !errorPhone && !errorPassword && !errorPasswordCheck) {
+    if (!errorEmail && !errorLogin && !errorFirstName && !errorSecondName && !errorPhone && !errorPassword && !errorPasswordCheck) {
       console.log(`Почта - ${emailEl.value}, Логин - ${loginEl.value}, Имя - ${firstNameEl.value}, Фамилия - ${secondNameEl.value}, Телефон - ${phoneEl.value}, Пароль - ${passwordEl.value}, Повтор пароля - ${passwordCheckEl.value}`);
       const registerData = {
         email: emailEl.value,
@@ -287,7 +287,7 @@ class SigninPage extends Block {
       {{#if ${!!window.store.getState().isLoading} }}
         {{{ Loader }}}
       {{/if}}
-    </section>`
+    </section>`;
   }
 }
 

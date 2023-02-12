@@ -1,6 +1,6 @@
 import Block from 'core/Block';
 
-export class UserPopupPage extends Block {
+export default class UserPopupPage extends Block {
   render() {
     return `<div class="user-popup">
       <div class="user-popup__wrapper">
@@ -25,6 +25,6 @@ export class UserPopupPage extends Block {
           <button class="user-popup__submit" type="submit">Добавить</button>
         </form>
       </div>
-    </div>`
+    </div>`;
   }
 }

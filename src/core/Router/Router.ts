@@ -1,11 +1,12 @@
 class Router {
   private routes: Record<string, Function> = {};
-  private isStarted = false;
+
+  public isStarted = false;
 
   start() {
     if (!this.isStarted) {
       this.isStarted = true;
-      window.onpopstate = (evt: PopStateEvent) => {
+      window.onpopstate = () => {
         this.onRouteChange.call(this);
       };
       this.onRouteChange();

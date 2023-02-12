@@ -1,11 +1,11 @@
-import LoginPage from 'pages/login/login';
-import SigninPage from 'pages/signin/signin';
-import Error500Page from 'pages/500/500';
-import Error404Page from 'pages/404/404';
-import ChatsPage from 'pages/chats/chats';
-import ProfilePage from 'pages/profile/profile';
-import ChangeProfilePage from 'pages/changeProfile/changeProfile';
-import ChangePasswordPage from 'pages/changePassword/changePassword';
+import Login from 'pages/login/login';
+import Signin from 'pages/signin/signin';
+import Error500 from 'pages/500/500';
+import Error404 from 'pages/404/404';
+import Chats from 'pages/chats/chats';
+import Profile from 'pages/profile/profile';
+import ChangeProfile from 'pages/changeProfile/changeProfile';
+import ChangePassword from 'pages/changePassword/changePassword';
 
 export enum Screens {
   LoginPage = 'login',
@@ -19,16 +19,14 @@ export enum Screens {
 }
 
 const map = {
-  [Screens.LoginPage]: LoginPage,
-  [Screens.SigninPage]: SigninPage,
-  [Screens.Error500Page]: Error500Page,
-  [Screens.Error404Page]: Error404Page,
-  [Screens.ChatsPage]: ChatsPage,
-  [Screens.ProfilePage]: ProfilePage,
-  [Screens.ChangeProfilePage]: ChangeProfilePage,
-  [Screens.ChangePasswordPage]: ChangePasswordPage,
+  [Screens.LoginPage]: Login,
+  [Screens.SigninPage]: Signin,
+  [Screens.Error500Page]: Error500,
+  [Screens.Error404Page]: Error404,
+  [Screens.ChatsPage]: Chats,
+  [Screens.ProfilePage]: Profile,
+  [Screens.ChangeProfilePage]: ChangeProfile,
+  [Screens.ChangePasswordPage]: ChangePassword,
 };
 
-export const getScreenComponent = (screen: Screens) => {
-  return map[screen];
-};
+export const getScreenComponent = (screen: Screens) => map[screen];

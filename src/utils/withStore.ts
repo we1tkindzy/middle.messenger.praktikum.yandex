@@ -1,9 +1,10 @@
+import { BlockClass } from 'core/Block';
 import { Store } from '../core/Store';
 
 type WithStateProps = { store: Store<AppState> };
 
-function withStore<P extends WithStateProps>(WrappedBlock: any) {
-  return class extends WrappedBlock<P> {
+function withStore<P extends WithStateProps>(WrappedBlock: BlockClass) {
+  return class extends WrappedBlock {
     public static componentName = WrappedBlock.componentName || WrappedBlock.name;
 
     constructor(props: P) {
@@ -23,7 +24,7 @@ function withStore<P extends WithStateProps>(WrappedBlock: any) {
       super.componentWillUnmount();
       window.store.off('changed', this.__onChangeStoreCallback);
     }
-  };
+  } as BlockClass;
 }
 
 export default withStore;

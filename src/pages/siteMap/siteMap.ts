@@ -1,6 +1,6 @@
 import Block from 'core/Block';
 
-export class SiteMap extends Block {
+export default class SiteMap extends Block {
   render() {
     return `<nav>
       <ul>
@@ -38,8 +38,6 @@ export class SiteMap extends Block {
           <a href="./file-popup">Изменение аватара</a>
         </li>
       </ul>
-    </nav>`
+    </nav>`;
   }
 }
-
-

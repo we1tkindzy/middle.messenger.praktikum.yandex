@@ -1,6 +1,6 @@
 import Block from 'core/Block';
 
-export class FilePopupPage extends Block {
+export default class FilePopupPage extends Block {
   render() {
     return `<section class="file-popup">
       <div class="file-popup__wrapper">
@@ -23,6 +23,6 @@ export class FilePopupPage extends Block {
           <button class="file-popup__submit" type="submit">Поменять</button>
         </form>
       </div>
-    </section>`
+    </section>`;
   }
 }

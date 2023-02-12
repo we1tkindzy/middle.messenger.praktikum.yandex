@@ -4,7 +4,7 @@ interface InputProps {
   onInput?: () => void;
   onFocus?: () => void;
   onBlur?: () => void;
-  type?: "text" | "password" | "email";
+  type?: 'text' | 'password' | 'email';
   placeholder?: string;
   name?: string;
   ref?: string;
@@ -13,13 +13,15 @@ interface InputProps {
 }
 
 class Input extends Block {
-  static componentName = "Input";
+  static componentName = 'Input';
 
-  constructor({onInput, onFocus, onBlur, ...props}: InputProps) {
-    super({...props, events: {input: onInput, focus: onFocus, blur: onBlur}});
+  constructor({
+    onInput, onFocus, onBlur, ...props
+  }: InputProps) {
+    super({ ...props, events: { input: onInput, focus: onFocus, blur: onBlur } });
   }
 
-  protected render(): string {
+  render(): string {
     return `<input
       class="{{className}}__input"
       type="{{type}}"

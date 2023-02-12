@@ -1,3 +1,6 @@
+import { Screens } from 'utils/screenList';
+import type { Dispatch } from 'core/Store';
+
 declare global {
   export type Nullable<T> = T | null;
 
@@ -5,6 +8,8 @@ declare global {
   export type Values<T extends Record<string, unknown>> = T[Keys<T>];
 
   export type Indexed = { [key: string]: any };
+
+  export type DispatchStateHandler<TAction> = (dispatch: Dispatch<AppState>, state: AppState, action: TAction) => Promise<void>;
 
   export type AppState = {
     appIsInited: boolean;
@@ -71,4 +76,4 @@ declare global {
   };
 }
 
-export {}
+export {};

@@ -2,15 +2,16 @@ import { Store } from 'core/Store';
 import renderDOM from 'core/renderDOM';
 import Router from 'core/Router/Router';
 import { getScreenComponent, Screens } from 'utils/screenList';
+import Block from 'core/Block';
 
 const routes = [
   {
-    path: '/login',
+    path: '/',
     block: Screens.LoginPage,
     shouldAuthorized: false,
   },
   {
-    path: '/signin',
+    path: '/sign-up',
     block: Screens.SigninPage,
     shouldAuthorized: false,
   },
@@ -25,7 +26,7 @@ const routes = [
     shouldAuthorized: false,
   },
   {
-    path: '/',
+    path: '/messenger',
     block: Screens.ChatsPage,
     shouldAuthorized: true,
   },
@@ -35,12 +36,12 @@ const routes = [
     shouldAuthorized: true,
   },
   {
-    path: '/change-profile',
+    path: '/settings',
     block: Screens.ChangeProfilePage,
     shouldAuthorized: true,
   },
   {
-    path: '/change-password',
+    path: '/settings-password',
     block: Screens.ChangePasswordPage,
     shouldAuthorized: true,
   },
@@ -75,7 +76,7 @@ function initRouter(router: Router, store: Store<AppState>) {
 
     if (prevState.screen !== nextState.screen) {
       const Page = getScreenComponent(nextState.screen);
-      renderDOM(new Page({}));
+      renderDOM(new Page({}) as Block);
       document.title = `App / ${Page.componentName}`;
     }
   });

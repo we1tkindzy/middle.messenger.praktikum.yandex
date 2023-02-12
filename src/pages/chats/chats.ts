@@ -5,12 +5,12 @@ import withStore from 'utils/withStore';
 import withChats from 'utils/withChats';
 import { createChat, chooseChat } from 'service/chats';
 import Messages from 'service/messages';
-import ProfileIcon from 'assets/dropdown-icon.svg'
+import ProfileIcon from 'assets/dropdown-icon.svg';
 import dateFormatting from 'helpers/dateFormatting';
-import { escapeHtml } from 'helpers/escapeHTML';
-import { queryHtmlInput } from 'helpers/queryHTMLInput';
+import escapeHtml from 'helpers/escapeHTML';
+import queryHtmlInput from 'helpers/queryHTMLInput';
 
-import './chats.scss'
+import './chats.scss';
 
 interface ChatsPageProps {
   onSubmit?: () => void;
@@ -38,7 +38,8 @@ class ChatsPage extends Block {
   }
 
   onChooseChat(event: Event) {
-    const chatId = event.currentTarget!.id;
+    const target = event.currentTarget as HTMLElement;
+    const chatId = target!.id;
     this.props.store.dispatch(chooseChat, chatId);
   }
 
@@ -51,19 +52,19 @@ class ChatsPage extends Block {
   onSubmit(evt: any) {
     evt.preventDefault();
     const messageEl = queryHtmlInput(this.element, 'input[name="message"]');
-    let messageElError = messageEl.parentNode?.querySelector('.error');
+    const messageElError = messageEl.parentNode?.querySelector('.error');
 
     const errormessage = validateForm([
-      { type: ValidateRuleType.Message, value: messageEl.value}
+      { type: ValidateRuleType.Message, value: messageEl.value },
     ]);
 
-    messageEl.value = messageEl.value;
+    // messageEl.value = messageEl.value;
 
-    if(messageElError) {
+    if (messageElError) {
       messageElError.textContent = errormessage;
     }
 
-    if(!errormessage) {
+    if (!errormessage) {
       console.log(`Сообщение: ${messageEl.value}`);
       Messages.sendMessage(escapeHtml(messageEl.value));
       messageEl.value = '';
@@ -72,7 +73,7 @@ class ChatsPage extends Block {
 
   render() {
     if (this.props.chats === 'undefined') {
-      return `{{{ Loader }}}`;
+      return '{{{ Loader }}}';
     }
 
     return `<section class="chats-page">
@@ -105,7 +106,7 @@ class ChatsPage extends Block {
                 messages="${chat.unread_count}"
                 onClick=onChooseChat
                 id="${chat.id}"
-              }}}`).join(" ")}
+              }}}`).join(' ')}
             </ul>
           {{else}}
             <p class="chats__no-chats">Нет чатов</p>

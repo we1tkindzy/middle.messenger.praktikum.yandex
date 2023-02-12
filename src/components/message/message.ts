@@ -1,5 +1,5 @@
 import Block from 'core/Block';
-import './message.scss'
+import './message.scss';
 
 interface MessageProps {
   className?: String;
@@ -9,7 +9,7 @@ interface MessageProps {
 }
 
 class Message extends Block {
-  static componentName = "Message";
+  static componentName = 'Message';
 
   constructor(props: MessageProps) {
     super(props);

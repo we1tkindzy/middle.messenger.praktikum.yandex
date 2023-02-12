@@ -1,10 +1,10 @@
-@import './styles/globals/variables.scss';
-@import './styles/globals/fonts.scss';
-@import './styles/blocks/authorization.scss';
-@import './styles/blocks/chats-page.scss';
-@import './styles/blocks/user-popup.scss';
-@import './styles/blocks/profile.scss';
-@import './styles/blocks/file-popup.scss';
+@import './globals/variables.scss';
+@import './globals/fonts.scss';
+@import './blocks/authorization.scss';
+@import './blocks/chats-page.scss';
+@import './blocks/user-popup.scss';
+@import './blocks/profile.scss';
+@import './blocks/file-popup.scss';
 
 *,
 ::after,

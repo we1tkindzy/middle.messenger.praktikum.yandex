@@ -8,14 +8,14 @@ interface ErrorProps {
 }
 
 class Error extends Block {
-  static componentName = "Error";
+  static componentName = 'Error';
 
-  constructor({...props}: ErrorProps) {
-    super({...props});
+  constructor({ ...props }: ErrorProps) {
+    super({ ...props });
   }
 
-  protected render(): string {
-    return `<div ref="{{ref}}" class="error">{{#if text}}{{text}}{{/if}}</div>`;
+  render(): string {
+    return '<div ref="{{ref}}" class="error">{{#if text}}{{text}}{{/if}}</div>';
   }
 }
 

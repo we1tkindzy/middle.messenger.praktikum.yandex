@@ -4,7 +4,7 @@ import withRouter from 'utils/withRouter';
 import withStore from 'utils/withStore';
 import withUser from 'utils/withUser';
 import { changePassword } from 'service/user';
-import { queryHtmlInput } from 'helpers/queryHTMLInput';
+import queryHtmlInput from 'helpers/queryHTMLInput';
 
 interface ChangePasswordPageProps {
   onClick?: () => void;
@@ -13,83 +13,82 @@ interface ChangePasswordPageProps {
 
 class ChangePasswordPage extends Block {
   constructor(props: ChangePasswordPageProps) {
-    super({...props});
+    super({ ...props });
 
     this.setProps({
       onSubmit: (evt: SubmitEvent) => this.onSubmit(evt),
       onBlur: (evt: Event) => {
         const inputEl = evt.target as HTMLInputElement;
-        let errorEl = inputEl.parentNode?.querySelector('.error');
+        const errorEl = inputEl.parentNode?.querySelector('.error');
 
         if (inputEl.id === 'old_password') {
           const errorOldPassword = validateForm([
-            { type: ValidateRuleType.Password, value: inputEl.value}
+            { type: ValidateRuleType.Password, value: inputEl.value },
           ]);
 
-          if(errorEl) {
+          if (errorEl) {
             errorEl.textContent = errorOldPassword;
           }
         }
 
         if (inputEl.id === 'new_password') {
           const errorNewPassword = validateForm([
-            { type: ValidateRuleType.Password, value: inputEl.value},
+            { type: ValidateRuleType.Password, value: inputEl.value },
           ]);
 
-          if(errorEl) {
+          if (errorEl) {
             errorEl.textContent = errorNewPassword;
           }
         }
 
         if (inputEl.id === 'new_password_check') {
           const errorNewPasswordCheck = validateForm([
-            { type: ValidateRuleType.Password, value: inputEl.value},
+            { type: ValidateRuleType.Password, value: inputEl.value },
           ]);
 
-          if(errorEl) {
+          if (errorEl) {
             errorEl.textContent = errorNewPasswordCheck;
           }
         }
       },
       navigateToProfile: () => this.props.router.go('/profile'),
-    })
+    });
   }
 
   onSubmit(evt: SubmitEvent) {
     evt.preventDefault();
     const oldPasswordEl = queryHtmlInput(this.element, 'input[name="old_password"]');
-    let oldPasswordElError = oldPasswordEl.parentNode?.querySelector('.error');
+    const oldPasswordElError = oldPasswordEl.parentNode?.querySelector('.error');
     const newPasswordEl = queryHtmlInput(this.element, 'input[name="new_password"]');
-    let ewPasswordElError = newPasswordEl.parentNode?.querySelector('.error');
+    const newPasswordElError = newPasswordEl.parentNode?.querySelector('.error');
     const newPasswordCheckEl = queryHtmlInput(this.element, 'input[name="new_password_check"]');
-    let newPasswordCheckElError = newPasswordCheckEl.parentNode?.querySelector('.error');
-
+    const newPasswordCheckElError = newPasswordCheckEl.parentNode?.querySelector('.error');
 
     const errorOldPassword = validateForm([
-      { type: ValidateRuleType.Password, value: oldPasswordEl.value}
+      { type: ValidateRuleType.Password, value: oldPasswordEl.value },
     ]);
 
     const errorNewPassword = validateForm([
-      { type: ValidateRuleType.Password, value: newPasswordEl.value}
+      { type: ValidateRuleType.Password, value: newPasswordEl.value },
     ]);
 
-    let errorNewPasswordCheck = validateForm([
-      { type: ValidateRuleType.Password, value: newPasswordCheckEl.value}
+    const errorNewPasswordCheck = validateForm([
+      { type: ValidateRuleType.Password, value: newPasswordCheckEl.value },
     ]);
 
-    oldPasswordEl.value = oldPasswordEl.value;
-    newPasswordEl.value = newPasswordEl.value;
-    newPasswordCheckEl.value = newPasswordCheckEl.value;
+    // oldPasswordEl.value = oldPasswordEl.value;
+    // newPasswordEl.value = newPasswordEl.value;
+    // newPasswordCheckEl.value = newPasswordCheckEl.value;
 
-    if(oldPasswordElError) {
+    if (oldPasswordElError) {
       oldPasswordElError.textContent = errorOldPassword;
     }
 
-    if(ewPasswordElError) {
-      ewPasswordElError.textContent = errorNewPassword;
+    if (newPasswordElError) {
+      newPasswordElError.textContent = errorNewPassword;
     }
 
-    if(newPasswordCheckElError) {
+    if (newPasswordCheckElError) {
       newPasswordCheckElError.textContent = errorNewPasswordCheck;
     }
 
@@ -97,11 +96,11 @@ class ChangePasswordPage extends Block {
       newPasswordCheckElError.textContent = 'Пароли должны совпадать';
     }
 
-    if(!errorOldPassword && !errorNewPassword && !errorNewPasswordCheck) {
+    if (!errorOldPassword && !errorNewPassword && !errorNewPasswordCheck) {
       console.log(`Старый пароль - ${oldPasswordEl.value}, Новый пароль - ${newPasswordEl.value}, Повтор нового пароля - ${newPasswordCheckEl.value}`);
       const passwordData = {
         oldPassword: oldPasswordEl.value,
-        newPassword: newPasswordEl.value
+        newPassword: newPasswordEl.value,
       };
       this.props.store.dispatch(changePassword, passwordData);
       oldPasswordEl.value = '';
@@ -112,7 +111,7 @@ class ChangePasswordPage extends Block {
 
   render() {
     if (!this.props.user) {
-      return `{{{ Loader }}}`;
+      return '{{{ Loader }}}';
     }
 
     return `<section class="profile">
@@ -171,7 +170,7 @@ class ChangePasswordPage extends Block {
       {{#if ${!!window.store.getState().isLoading} }}
         {{{ Loader }}}
       {{/if}}
-    </section>`
+    </section>`;
   }
 }
 

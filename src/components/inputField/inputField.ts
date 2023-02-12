@@ -3,7 +3,7 @@ import './inputField.scss';
 
 interface InputFieldProps {
   onBlur?: () => void;
-  type?: "text" | "password" | "tel" | "email";
+  type?: 'text' | 'password' | 'tel' | 'email';
   placeholder?: string;
   name?: string;
   label?: string;
@@ -14,13 +14,13 @@ interface InputFieldProps {
 }
 
 class InputField extends Block {
-  static componentName = "InputField";
+  static componentName = 'InputField';
 
-  constructor({...props}: InputFieldProps) {
-    super({...props});
+  constructor({ ...props }: InputFieldProps) {
+    super({ ...props });
   }
 
-  protected render(): string {
+  render(): string {
     return `<div class="{{className}}">
       <label class="{{className}}__label" for="{{name}}">{{label}}</label>
       {{{ Input

@@ -3,7 +3,7 @@ import { ValidateRuleType, validateForm } from 'helpers/validateForm';
 import withRouter from 'utils/withRouter';
 import withStore from 'utils/withStore';
 import { login } from 'service/auth';
-import { queryHtmlInput } from 'helpers/queryHTMLInput';
+import queryHtmlInput from 'helpers/queryHTMLInput';
 
 type LoginPageProps = {
   onNavigate?: () => void;
@@ -14,36 +14,36 @@ type LoginPageProps = {
 
 class LoginPage extends Block {
   constructor(props: LoginPageProps) {
-    super(props)
+    super(props);
 
     this.setProps({
       onSubmit: (evt: SubmitEvent) => this.onSubmit(evt),
       onBlur: (evt: Event) => {
         evt.preventDefault();
         const inputEl = evt.target as HTMLInputElement;
-        let errorEl = inputEl.parentNode?.querySelector('.error');
+        const errorEl = inputEl.parentNode?.querySelector('.error');
 
         if (inputEl.id === 'login') {
           const errorLogin = validateForm([
-            { type: ValidateRuleType.Login, value: inputEl.value}
+            { type: ValidateRuleType.Login, value: inputEl.value },
           ]);
 
-          if(errorEl) {
+          if (errorEl) {
             errorEl.textContent = errorLogin;
           }
         }
 
         if (inputEl.id === 'password') {
           const errorPassword = validateForm([
-            { type: ValidateRuleType.Password, value: inputEl.value},
+            { type: ValidateRuleType.Password, value: inputEl.value },
           ]);
 
-          if(errorEl) {
+          if (errorEl) {
             errorEl.textContent = errorPassword;
           }
         }
       },
-      onNavigateToSignin: () => this.props.router.go('/signin'),
+      onNavigateToSignin: () => this.props.router.go('/sign-up'),
       formError: () => this.props.store.getState().loginFormError,
     });
   }
@@ -51,30 +51,30 @@ class LoginPage extends Block {
   onSubmit(evt: SubmitEvent) {
     evt.preventDefault();
     const loginEl = queryHtmlInput(this.element, 'input[name="login"]');
-    let loginElError = loginEl.parentNode?.querySelector('.error');
+    const loginElError = loginEl.parentNode?.querySelector('.error');
     const passwordEl = queryHtmlInput(this.element, 'input[name="password"]');
-    let passwordElError = passwordEl.parentNode?.querySelector('.error');
+    const passwordElError = passwordEl.parentNode?.querySelector('.error');
 
     const errorLogin = validateForm([
-      { type: ValidateRuleType.Login, value: loginEl.value}
+      { type: ValidateRuleType.Login, value: loginEl.value },
     ]);
 
     const errorPassword = validateForm([
-      { type: ValidateRuleType.Password, value: passwordEl.value},
+      { type: ValidateRuleType.Password, value: passwordEl.value },
     ]);
 
-    loginEl.value = loginEl.value;
-    passwordEl.value = passwordEl.value;
+    // loginEl.value = loginEl.value;
+    // passwordEl.value = passwordEl.value;
 
-    if(loginElError) {
+    if (loginElError) {
       loginElError.textContent = errorLogin;
     }
 
-    if(passwordElError) {
+    if (passwordElError) {
       passwordElError.textContent = errorPassword;
     }
 
-    if(!errorLogin && !errorPassword) {
+    if (!errorLogin && !errorPassword) {
       console.log(`Логин - ${loginEl.value}, Пароль - ${passwordEl.value}`);
       const loginData = {
         login: loginEl.value,

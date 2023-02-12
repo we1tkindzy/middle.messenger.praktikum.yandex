@@ -9,10 +9,10 @@ interface AvatarProps {
 }
 
 class Avatar extends Block {
-  static componentName = "Avatar";
+  static componentName = 'Avatar';
 
-  constructor({url, className, onSubmit,}: AvatarProps) {
-    super({url, className, events: {submit: onSubmit}});
+  constructor({ url, className, onSubmit }: AvatarProps) {
+    super({ url, className, events: { submit: onSubmit } });
 
     this.setProps({
       url: this.checkURL(url),

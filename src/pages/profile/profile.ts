@@ -13,17 +13,17 @@ class ProfilePage extends Block {
     super(props);
 
     this.setProps({
-      navigateToProfileChange: () => this.props.router.go('/change-profile'),
-      navigateToPasswordChange: () => this.props.router.go('/change-password'),
-      navigateToLogin: () => this.props.router.go('/login'),
-      navigateToChats: () => this.props.router.go('/'),
+      navigateToProfileChange: () => this.props.router.go('/settings'),
+      navigateToPasswordChange: () => this.props.router.go('/settings-password'),
+      navigateToLogin: () => this.props.router.go('/'),
+      navigateToChats: () => this.props.router.go('/messenger'),
       onLogout: () => this.props.store.dispatch(logout),
     });
   }
 
   render() {
     if (!this.props.user) {
-      return `{{{ Loader }}}`;
+      return '{{{ Loader }}}';
     }
 
     return `<section class="profile">
@@ -62,7 +62,7 @@ class ProfilePage extends Block {
 
               <li class="profile-field">
                 <span class="profile-field__label">Имя в чате</span>
-                <span class="profile-field__input">${this.props.user.displayName === null ? `` : this.props.user.displayName}</span>
+                <span class="profile-field__input">${this.props.user.displayName === null ? '' : this.props.user.displayName}</span>
               </li>
 
               <li class="profile-field">
